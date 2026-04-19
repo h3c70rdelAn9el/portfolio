@@ -237,7 +237,7 @@ export default function Home() {
           className="font-extrabold leading-[1.02] text-white mb-3"
           style={{
             fontFamily: 'var(--font-syne), sans-serif',
-            fontSize: 'clamp(44px, 8vw, 88px)',
+            fontSize: 'clamp(32px, 5vw, 72px)',
           }}>
           Hey, I&apos;m
           <br />

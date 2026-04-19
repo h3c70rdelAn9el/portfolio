@@ -4,16 +4,27 @@ import './globals.css';
 // import Navbar from "@/components/Navbar";
 // import Footer from "@/components/Footer";
 
-const syne = Syne({
+// const syne = Syne({
+//   subsets: ['latin'],
+//   weight: ['400', '700', '800'],
+//   variable: '--font-syne',
+// });
+
+// const dmMono = DM_Mono({
+//   subsets: ['latin'],
+//   weight: ['300', '400', '500'],
+//   variable: '--font-dm-mono',
+// });
+import { Geist, Geist_Mono } from 'next/font/google';
+
+const geist = Geist({
   subsets: ['latin'],
-  weight: ['400', '700', '800'],
-  variable: '--font-syne',
+  variable: '--font-geist',
 });
 
-const dmMono = DM_Mono({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
-  variable: '--font-dm-mono',
+  variable: '--font-geist-mono',
 });
 
 export const metadata: Metadata = {
@@ -25,8 +36,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${syne.variable} ${dmMono.variable}`}>
-      <body className="flex flex-col min-h-screen bg-[#07090f] font-[family-name:var(--font-dm-mono)]">
+      className={`${geist.variable} ${geistMono.variable}`}>
+      <body className="flex flex-col min-h-screen bg-[#07090f] font-[family-name:var(--font-geist-mono)]">
         {/* <Navbar /> */}
         <main className="flex-grow">{children}</main>
         {/* <Footer /> */}
