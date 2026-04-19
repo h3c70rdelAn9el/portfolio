@@ -6,6 +6,7 @@ import { SocialLinks } from '../components/SocialLinks';
 import { socials } from '../components/socials';
 import { Hero } from '../components/Hero';
 import { Nav } from '../components/Nav';
+import { Orbs } from '../components/Orbs';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const FONT_MUSIC = 'var(--font-cormorant), serif';
@@ -73,20 +74,12 @@ export default function Home() {
       className="relative min-h-screen bg-[#07090f] text-[#e2ddd6] overflow-hidden"
       style={{ fontFamily: c.bodyFont, transition: 'font-family 0s' }}>
       {/* ── Orbs ── */}
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full blur-[100px] transition-all duration-700"
-          style={{ background: c.orb1, opacity: isMusic ? 0.1 : 0.12 }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-[360px] h-[360px] rounded-full blur-[100px] transition-all duration-700"
-          style={{ background: c.orb2, opacity: 0.09 }}
-        />
-        <div
-          className="absolute top-1/2 left-1/3 w-[500px] h-[260px] rounded-full blur-[120px] transition-all duration-700"
-          style={{ background: c.orb3, opacity: 0.07 }}
-        />
-      </div>
+      <Orbs
+        orb1={c.orb1}
+        orb2={c.orb2}
+        orb3={c.orb3}
+        isMusic={isMusic}
+      />
 
       {/* ── Grid texture ── */}
       <div
