@@ -13,7 +13,7 @@ interface SocialLinksProps {
 
 export function SocialLinks({ socials, accent }: SocialLinksProps) {
   return (
-    <div className="flex items-center mx-auto gap-3 px-4">
+    <div className="flex items-center mx-auto w-fit gap-3 px-4">
       {socials.map((s) => (
         <a
           key={s.label}
