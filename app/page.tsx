@@ -7,6 +7,7 @@ import { socials } from '../components/socials';
 import { Hero } from '../components/Hero';
 import { Nav } from '../components/Nav';
 import { Orbs } from '../components/Orbs';
+import { CornerCard } from '../components/CornerCard';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const FONT_MUSIC = 'var(--font-cormorant), serif';
@@ -114,20 +115,11 @@ export default function Home() {
       />
 
       {/* ── Corner card ── */}
-      <div className="pointer-events-none absolute bottom-10 right-8 md:right-16 z-10 hidden md:block">
-        <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-6 py-4">
-          <p
-            className="text-[10px] tracking-[0.18em] uppercase text-white/25 mb-1"
-            style={{ fontFamily: FONT_DEV }}>
-            {c.cornerLabel}
-          </p>
-          <p
-            className="text-sm text-white/60"
-            style={{ fontFamily: FONT_DEV }}>
-            {c.cornerValue}
-          </p>
-        </div>
-      </div>
+      <CornerCard
+        cornerLabel={c.cornerLabel}
+        cornerValue={c.cornerValue}
+        fontFamily={FONT_DEV}
+      />
       {/* Socials */}
     </main>
   );
