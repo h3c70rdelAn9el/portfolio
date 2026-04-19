@@ -1,30 +1,18 @@
 import type { Metadata } from 'next';
-import { Syne, DM_Mono } from 'next/font/google';
+import { Space_Grotesk, Cormorant_Infant } from 'next/font/google';
 import './globals.css';
-// import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
 
-// const syne = Syne({
-//   subsets: ['latin'],
-//   weight: ['400', '700', '800'],
-//   variable: '--font-syne',
-// });
-
-// const dmMono = DM_Mono({
-//   subsets: ['latin'],
-//   weight: ['300', '400', '500'],
-//   variable: '--font-dm-mono',
-// });
-import { Geist, Geist_Mono } from 'next/font/google';
-
-const geist = Geist({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-geist',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-space',
 });
 
-const geistMono = Geist_Mono({
+const cormorant = Cormorant_Infant({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
 });
 
 export const metadata: Metadata = {
@@ -36,11 +24,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${geistMono.variable}`}>
-      <body className="flex flex-col min-h-screen bg-[#07090f] font-[family-name:var(--font-geist-mono)]">
-        {/* <Navbar /> */}
+      className={`${spaceGrotesk.variable} ${cormorant.variable}`}>
+      <body
+        className="flex flex-col min-h-screen bg-[#07090f]"
+        style={{ fontFamily: 'var(--font-space), sans-serif' }}>
         <main className="flex-grow">{children}</main>
-        {/* <Footer /> */}
       </body>
     </html>
   );

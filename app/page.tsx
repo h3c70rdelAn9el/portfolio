@@ -2,6 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 
+const FONT_DEV = 'var(--font-space), sans-serif';
+const FONT_MUSIC = 'var(--font-cormorant), serif';
+
 // ── Social links ──────────────────────────────────────────────
 const socials = [
   {
@@ -129,12 +132,14 @@ const content = {
     orb3: '#1e3a8a',
     cornerLabel: 'currently building',
     cornerValue: 'something cool ✦',
+    headingFont: FONT_DEV,
+    bodyFont: FONT_DEV,
   },
   music: {
     accent: '#f59e0b',
     label: 'Guitarist · Instructor',
     subtitle: 'Music is language.',
-    bio: 'Guitarist from Los Angeles. I teach, I play, I compose. Whether you are picking up a guitar for the first time or leveling up — pull up a chair.',
+    bio: "Guitarist from Los Angeles. I teach, I play, I compose. Whether you're picking up a guitar for the first time or leveling up — pull up a chair.",
     pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
     pillColor: 'rgba(245,158,11,0.07)',
     pillBorder: 'rgba(245,158,11,0.25)',
@@ -145,6 +150,8 @@ const content = {
     orb3: '#92400e',
     cornerLabel: 'based in',
     cornerValue: 'Los Angeles, CA ✦',
+    headingFont: FONT_MUSIC,
+    bodyFont: FONT_DEV,
   },
 };
 
@@ -153,6 +160,7 @@ export default function Home() {
   const [mode, setMode] = useState<'dev' | 'music'>('dev');
   const [glitching, setGlitching] = useState(false);
   const c = content[mode];
+  const isMusic = mode === 'music';
 
   const glitchedLabel = useGlitchText(c.label, glitching);
   const glitchedSubtitle = useGlitchText(c.subtitle, glitching);
@@ -164,12 +172,10 @@ export default function Home() {
     setTimeout(() => setGlitching(false), 600);
   };
 
-  const isMusic = mode === 'music';
-
   return (
     <main
       className="relative min-h-screen bg-[#07090f] text-[#e2ddd6] overflow-hidden"
-      style={{ fontFamily: 'var(--font-dm-mono), monospace' }}>
+      style={{ fontFamily: c.bodyFont, transition: 'font-family 0s' }}>
       {/* ── Orbs ── */}
       <div className="pointer-events-none absolute inset-0">
         <div
@@ -199,8 +205,8 @@ export default function Home() {
       {/* ── Nav ── */}
       <nav className="relative z-10 flex items-center justify-between px-8 py-7 md:px-16">
         <span
-          className="text-lg font-extrabold tracking-tight text-white"
-          style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
+          className="text-lg font-bold tracking-tight text-white"
+          style={{ fontFamily: FONT_DEV }}>
           hda<span style={{ color: c.accent, transition: 'color 0.5s' }}>.</span>
         </span>
 
@@ -209,7 +215,8 @@ export default function Home() {
             <a
               key={l}
               href={`#${l.toLowerCase()}`}
-              className="text-xs tracking-widest text-white/35 hover:text-white/80 transition-colors uppercase">
+              className="text-xs tracking-widest text-white/35 hover:text-white/80 transition-colors uppercase"
+              style={{ fontFamily: FONT_DEV }}>
               {l}
             </a>
           ))}
@@ -217,7 +224,8 @@ export default function Home() {
 
         <button
           onClick={handleToggle}
-          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/50 backdrop-blur-md hover:text-white/80 hover:border-white/20 transition-all duration-300 cursor-pointer">
+          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/50 backdrop-blur-md hover:text-white/80 hover:border-white/20 transition-all duration-300 cursor-pointer"
+          style={{ fontFamily: FONT_DEV }}>
           <span>{isMusic ? '💻' : '🎸'}</span>
           <span className="tracking-widest uppercase">{isMusic ? 'Dev' : 'Music'}</span>
         </button>
@@ -228,36 +236,43 @@ export default function Home() {
         {/* Mode label */}
         <p
           className="mb-5 text-xs tracking-[0.2em] uppercase transition-colors duration-500"
-          style={{ color: c.accent }}>
+          style={{ color: c.accent, fontFamily: FONT_DEV }}>
           {glitchedLabel}
         </p>
 
-        {/* Heading */}
+        {/* Heading — font switches on toggle */}
         <h1
-          className="font-extrabold leading-[1.02] text-white mb-3"
+          className="font-bold leading-[1.05] text-white mb-3 transition-all duration-500"
           style={{
-            fontFamily: 'var(--font-syne), sans-serif',
-            fontSize: 'clamp(32px, 5vw, 72px)',
+            fontFamily: c.headingFont,
+            fontSize: 'clamp(36px, 6vw, 80px)',
           }}>
           Hey, I&apos;m
           <br />
           <em
-            className="not-italic"
+            className={isMusic ? 'italic' : 'not-italic'}
             style={{ color: c.accent, transition: 'color 0.5s' }}>
             Hector
           </em>{' '}
           del Angel.
         </h1>
 
-        {/* Subtitle — glitches */}
+        {/* Subtitle — glitches, italic for music */}
         <p
-          className="mb-6 text-xl md:text-2xl font-light text-white/50 italic"
-          style={{ fontFamily: 'var(--font-syne), sans-serif', minHeight: '2rem' }}>
+          className="mb-6 font-light text-white/50 transition-all duration-500"
+          style={{
+            fontFamily: c.headingFont,
+            fontSize: 'clamp(18px, 2.5vw, 26px)',
+            fontStyle: isMusic ? 'italic' : 'normal',
+            minHeight: '2rem',
+          }}>
           {glitchedSubtitle}
         </p>
 
         {/* Bio — glitches */}
-        <p className="max-w-md text-sm leading-loose text-white/40 mb-10 min-h-[80px]">
+        <p
+          className="max-w-md text-sm leading-loose text-white/40 mb-10 min-h-[80px]"
+          style={{ fontFamily: FONT_DEV }}>
           {glitchedBio}
         </p>
 
@@ -268,6 +283,7 @@ export default function Home() {
               key={pill}
               className="rounded-full px-4 py-1.5 text-[11px] tracking-wider border transition-all duration-500"
               style={{
+                fontFamily: FONT_DEV,
                 background: c.pillColor,
                 borderColor: c.pillBorder,
                 color: c.pillText,
@@ -308,10 +324,16 @@ export default function Home() {
       {/* ── Corner card ── */}
       <div className="pointer-events-none absolute bottom-10 right-8 md:right-16 z-10 hidden md:block">
         <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl px-6 py-4">
-          <p className="text-[10px] tracking-[0.18em] uppercase text-white/25 mb-1">
+          <p
+            className="text-[10px] tracking-[0.18em] uppercase text-white/25 mb-1"
+            style={{ fontFamily: FONT_DEV }}>
             {c.cornerLabel}
           </p>
-          <p className="text-sm text-white/60">{c.cornerValue}</p>
+          <p
+            className="text-sm text-white/60"
+            style={{ fontFamily: FONT_DEV }}>
+            {c.cornerValue}
+          </p>
         </div>
       </div>
     </main>
