@@ -9,7 +9,14 @@ interface HeroProps {
   isMusic: boolean;
 }
 
-export function Hero({ glitchedLabel, glitchedSubtitle, glitchedBio, glitchedName, c, isMusic }: HeroProps) {
+export function Hero({
+  glitchedLabel,
+  glitchedSubtitle,
+  glitchedBio,
+  glitchedName,
+  c,
+  isMusic,
+}: HeroProps) {
   return (
     <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-8 md:px-16 pb-20">
       {/* Mode label */}

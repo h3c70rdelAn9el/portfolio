@@ -1,9 +1,7 @@
-import { Hero } from '../components/Hero';
 'use client';
 
 import { useState } from 'react';
 import { useGlitchText } from '../components/useGlitchText';
-import { Nav } from '../components/Nav';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const FONT_MUSIC = 'var(--font-cormorant), serif';
@@ -97,15 +95,68 @@ const content = {
     orb3: '#1e3a8a',
     cornerLabel: 'currently building',
     cornerValue: 'something cool ✦',
-      {/* ── Hero ── */}
-      <Hero
-        glitchedLabel={glitchedLabel}
-        glitchedSubtitle={glitchedSubtitle}
-        glitchedBio={glitchedBio}
-        glitchedName={glitchedName}
-        c={c}
-        isMusic={isMusic}
-      />
+    headingFont: FONT_DEV,
+    bodyFont: FONT_DEV,
+  },
+  music: {
+    accent: '#f59e0b',
+    label: 'Guitarist · Instructor',
+    subtitle: 'Music is language.',
+    bio: "Guitarist from Los Angeles. I teach, I play, I compose. Whether you're picking up a guitar for the first time or leveling up — pull up a chair.",
+    pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
+    pillColor: 'rgba(245,158,11,0.07)',
+    pillBorder: 'rgba(245,158,11,0.25)',
+    pillText: 'rgba(245,158,11,0.9)',
+    navLinks: ['Listen', 'Lessons', 'About', 'Contact'],
+    orb1: '#f59e0b',
+    orb2: '#dc2626',
+    orb3: '#92400e',
+    cornerLabel: 'based in',
+    cornerValue: 'Los Angeles, CA ✦',
+    headingFont: FONT_MUSIC,
+    bodyFont: FONT_DEV,
+  },
+};
+
+// ── Component ─────────────────────────────────────────────────
+export default function Home() {
+  const [mode, setMode] = useState<'dev' | 'music'>('dev');
+  const [glitching, setGlitching] = useState(false);
+  const c = content[mode];
+  const isMusic = mode === 'music';
+
+  const glitchedLabel = useGlitchText(c.label, glitching);
+  const glitchedSubtitle = useGlitchText(c.subtitle, glitching);
+  const glitchedBio = useGlitchText(c.bio, glitching);
+  const glitchedName = useGlitchText('Hector', glitching);
+
+  const handleToggle = () => {
+    setGlitching(true);
+    setTimeout(() => setMode((m) => (m === 'dev' ? 'music' : 'dev')), 120);
+    setTimeout(() => setGlitching(false), 600);
+  };
+
+  return (
+    <main
+      className="relative min-h-screen bg-[#07090f] text-[#e2ddd6] overflow-hidden"
+      style={{ fontFamily: c.bodyFont, transition: 'font-family 0s' }}>
+      {/* ── Orbs ── */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full blur-[100px] transition-all duration-700"
+          style={{ background: c.orb1, opacity: isMusic ? 0.1 : 0.12 }}
+        />
+        <div
+          className="absolute bottom-0 right-0 w-[360px] h-[360px] rounded-full blur-[100px] transition-all duration-700"
+          style={{ background: c.orb2, opacity: 0.09 }}
+        />
+        <div
+          className="absolute top-1/2 left-1/3 w-[500px] h-[260px] rounded-full blur-[120px] transition-all duration-700"
+          style={{ background: c.orb3, opacity: 0.07 }}
+        />
+      </div>
+
+      {/* ── Grid texture ── */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
@@ -116,12 +167,33 @@ const content = {
       />
 
       {/* ── Nav ── */}
-      <Nav
-        navLinks={c.navLinks}
-        accent={c.accent}
-        isMusic={isMusic}
-        onToggle={handleToggle}
-      />
+      <nav className="relative z-10 flex items-center justify-between px-8 py-7 md:px-16">
+        <span
+          className="text-lg font-bold tracking-tight text-white"
+          style={{ fontFamily: FONT_DEV }}>
+          hda<span style={{ color: c.accent, transition: 'color 0.5s' }}>.</span>
+        </span>
+
+        <div className="hidden md:flex items-center gap-8">
+          {c.navLinks.map((l) => (
+            <a
+              key={l}
+              href={`#${l.toLowerCase()}`}
+              className="text-xs tracking-widest text-white/35 hover:text-white/80 transition-colors uppercase"
+              style={{ fontFamily: FONT_DEV }}>
+              {l}
+            </a>
+          ))}
+        </div>
+
+        <button
+          onClick={handleToggle}
+          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/50 backdrop-blur-md hover:text-white/80 hover:border-white/20 transition-all duration-300 cursor-pointer"
+          style={{ fontFamily: FONT_DEV }}>
+          <span>{isMusic ? '💻' : '🎸'}</span>
+          <span className="tracking-widest uppercase">{isMusic ? 'Dev' : 'Music'}</span>
+        </button>
+      </nav>
 
       {/* ── Hero ── */}
       <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-8 md:px-16 pb-20">
