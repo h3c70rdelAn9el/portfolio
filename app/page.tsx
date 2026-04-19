@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useGlitchText } from '../components/useGlitchText';
+import { Hero } from '../components/Hero';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const FONT_MUSIC = 'var(--font-cormorant), serif';
@@ -196,94 +197,14 @@ export default function Home() {
       </nav>
 
       {/* ── Hero ── */}
-      <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-8 md:px-16 pb-20">
-        {/* Mode label */}
-        <p
-          className="mb-5 text-xs tracking-[0.2em] uppercase transition-colors duration-500"
-          style={{ color: c.accent, fontFamily: FONT_DEV }}>
-          {glitchedLabel}
-        </p>
-
-        {/* Heading — font switches on toggle */}
-        <h1
-          className="font-bold leading-[1.05] text-white mb-3 transition-all duration-500"
-          style={{
-            fontFamily: c.headingFont,
-            fontSize: 'clamp(36px, 6vw, 80px)',
-          }}>
-          Hey, I&apos;m
-          <br />
-          <em
-            className={isMusic ? 'italic' : 'not-italic'}
-            style={{ color: c.accent, transition: 'color 0.5s' }}>
-            {glitchedName}
-          </em>{' '}
-          del Angel.
-        </h1>
-
-        {/* Subtitle — glitches, italic for music */}
-        <p
-          className="mb-6 font-light text-white/50 transition-all duration-500"
-          style={{
-            fontFamily: c.headingFont,
-            fontSize: 'clamp(18px, 2.5vw, 26px)',
-            fontStyle: isMusic ? 'italic' : 'normal',
-            minHeight: '2rem',
-          }}>
-          {glitchedSubtitle}
-        </p>
-
-        {/* Bio — glitches */}
-        <p
-          className="max-w-md text-sm leading-loose text-white/40 mb-10 min-h-[80px]"
-          style={{ fontFamily: FONT_DEV }}>
-          {glitchedBio}
-        </p>
-
-        {/* Pills */}
-        <div className="flex flex-wrap gap-2 mb-12">
-          {c.pills.map((pill) => (
-            <span
-              key={pill}
-              className="rounded-full px-4 py-1.5 text-[11px] tracking-wider border transition-all duration-500"
-              style={{
-                fontFamily: FONT_DEV,
-                background: c.pillColor,
-                borderColor: c.pillBorder,
-                color: c.pillText,
-              }}>
-              {pill}
-            </span>
-          ))}
-        </div>
-
-        {/* Socials */}
-        <div className="flex items-center gap-3">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="flex items-center justify-center w-10 h-10 rounded-xl border border-white/10 bg-white/5 text-white/40 backdrop-blur-md transition-all duration-300"
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.color = c.accent;
-                el.style.borderColor = c.accent + '55';
-                el.style.background = c.accent + '12';
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.color = 'rgba(255,255,255,0.4)';
-                el.style.borderColor = 'rgba(255,255,255,0.1)';
-                el.style.background = 'rgba(255,255,255,0.05)';
-              }}>
-              {s.icon}
-            </a>
-          ))}
-        </div>
-      </section>
+      <Hero
+        glitchedLabel={glitchedLabel}
+        glitchedSubtitle={glitchedSubtitle}
+        glitchedBio={glitchedBio}
+        glitchedName={glitchedName}
+        c={c}
+        isMusic={isMusic}
+      />
 
       {/* ── Corner card ── */}
       <div className="pointer-events-none absolute bottom-10 right-8 md:right-16 z-10 hidden md:block">
