@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import { useGlitchText } from '../components/useGlitchText';
+import { SocialLinks } from '../components/SocialLinks';
 import { Hero } from '../components/Hero';
+import { Nav } from '../components/Nav';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const FONT_MUSIC = 'var(--font-cormorant), serif';
@@ -159,7 +161,7 @@ export default function Home() {
 
       {/* ── Grid texture ── */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.03] px-4"
         style={{
           backgroundImage:
             'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
@@ -168,33 +170,12 @@ export default function Home() {
       />
 
       {/* ── Nav ── */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-7 md:px-16">
-        <span
-          className="text-lg font-bold tracking-tight text-white"
-          style={{ fontFamily: FONT_DEV }}>
-          hda<span style={{ color: c.accent, transition: 'color 0.5s' }}>.</span>
-        </span>
-
-        <div className="hidden md:flex items-center gap-8">
-          {c.navLinks.map((l) => (
-            <a
-              key={l}
-              href={`#${l.toLowerCase()}`}
-              className="text-xs tracking-widest text-white/35 hover:text-white/80 transition-colors uppercase"
-              style={{ fontFamily: FONT_DEV }}>
-              {l}
-            </a>
-          ))}
-        </div>
-
-        <button
-          onClick={handleToggle}
-          className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/50 backdrop-blur-md hover:text-white/80 hover:border-white/20 transition-all duration-300 cursor-pointer"
-          style={{ fontFamily: FONT_DEV }}>
-          <span>{isMusic ? '💻' : '🎸'}</span>
-          <span className="tracking-widest uppercase">{isMusic ? 'Dev' : 'Music'}</span>
-        </button>
-      </nav>
+      <Nav
+        navLinks={c.navLinks}
+        accent={c.accent}
+        isMusic={isMusic}
+        onToggle={handleToggle}
+      />
 
       {/* ── Hero ── */}
       <Hero
@@ -204,6 +185,10 @@ export default function Home() {
         glitchedName={glitchedName}
         c={c}
         isMusic={isMusic}
+      />
+      <SocialLinks
+        socials={socials}
+        accent={c.accent}
       />
 
       {/* ── Corner card ── */}
@@ -221,6 +206,7 @@ export default function Home() {
           </p>
         </div>
       </div>
+      {/* Socials */}
     </main>
   );
 }
