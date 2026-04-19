@@ -165,6 +165,7 @@ export default function Home() {
   const glitchedLabel = useGlitchText(c.label, glitching);
   const glitchedSubtitle = useGlitchText(c.subtitle, glitching);
   const glitchedBio = useGlitchText(c.bio, glitching);
+  const glitchedName = useGlitchText('Hector', glitching);
 
   const handleToggle = () => {
     setGlitching(true);
@@ -252,7 +253,7 @@ export default function Home() {
           <em
             className={isMusic ? 'italic' : 'not-italic'}
             style={{ color: c.accent, transition: 'color 0.5s' }}>
-            Hector
+            {glitchedName}
           </em>{' '}
           del Angel.
         </h1>
