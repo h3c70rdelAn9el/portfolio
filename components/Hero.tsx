@@ -54,9 +54,18 @@ export function Hero({
       </p>
       {/* Bio — glitches */}
       <p
-        className="max-w-md text-sm leading-loose text-white/40 mb-10 min-h-[80px]"
+        className="max-w-md text-sm leading-normal text-white/40 mb-4 min-h-[40px]"
         style={{ fontFamily: c.bodyFont }}>
-        {glitchedBio}
+        {glitchedBio.split(/<br\s*\/?>(\s*)?/i).map((part, idx, arr) =>
+          idx < arr.length - 1 ? (
+            <React.Fragment key={idx}>
+              {part}
+              <span style={{ display: 'block', height: '0.09rem' }} />
+            </React.Fragment>
+          ) : (
+            part
+          ),
+        )}
       </p>
       {/* Pills */}
       <div className="flex flex-wrap gap-2 mb-12">

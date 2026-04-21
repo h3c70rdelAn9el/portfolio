@@ -36,7 +36,7 @@ const content = {
     accent: '#f59e0b',
     label: 'Guitarist · Instructor',
     subtitle: 'Music is language.',
-    bio: "Guitarist from Los Angeles. I teach, I play, I compose. Whether you're picking up a guitar for the first time or leveling up — pull up a chair.",
+    bio: "Guitarist from Los Angeles. I teach, I play, I compose. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
     pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
     pillColor: 'rgba(245,158,11,0.07)',
     pillBorder: 'rgba(245,158,11,0.25)',
