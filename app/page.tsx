@@ -15,6 +15,7 @@ const FONT_MUSIC = 'var(--font-cormorant), serif';
 // ── Content ───────────────────────────────────────────────────
 const content = {
   dev: {
+    name: 'h3c70r del Angel',
     accent: '#4f6fff',
     label: 'Full-Stack Developer',
     subtitle: 'Code is language.',
@@ -33,6 +34,7 @@ const content = {
     bodyFont: FONT_DEV,
   },
   music: {
+    name: 'Hector del Angel',
     accent: '#f59e0b',
     label: 'Guitarist · Instructor',
     subtitle: 'Music is language.',
@@ -62,7 +64,7 @@ export default function Home() {
   const glitchedLabel = useGlitchText(c.label, glitching);
   const glitchedSubtitle = useGlitchText(c.subtitle, glitching);
   const glitchedBio = useGlitchText(c.bio, glitching);
-  const glitchedName = useGlitchText('Hector', glitching);
+  const glitchedName = useGlitchText(c.name, glitching);
 
   const handleToggle = () => {
     setGlitching(true);

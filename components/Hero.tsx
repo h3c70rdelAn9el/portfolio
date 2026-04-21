@@ -34,11 +34,51 @@ export function Hero({
         }}>
         Hey, I&apos;m
         <br />
-        <em
-          className={isMusic ? 'italic' : 'not-italic'}
-          style={{ color: c.accent, transition: 'color 0.5s' }}>
-          {glitchedName}
-        </em>{' '}
+        <span
+          style={{
+            position: 'relative',
+            display: 'inline-block',
+          }}>
+          {isMusic && (
+            <svg
+              aria-hidden="true"
+              width="100%"
+              height="1.2em"
+              viewBox="0 0 200 24"
+              style={{
+                position: 'absolute',
+                left: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 0,
+                pointerEvents: 'none',
+              }}>
+              {[0, 6, 12, 18, 24].map((y) => (
+                <line
+                  key={y}
+                  x1="0"
+                  x2="200"
+                  y1={y}
+                  y2={y}
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  opacity="0.25"
+                />
+              ))}
+            </svg>
+          )}
+          <em
+            className={isMusic ? 'italic' : 'not-italic'}
+            style={{
+              color: c.accent,
+              transition: 'color 0.5s',
+              position: 'relative',
+              zIndex: 1,
+              background: 'transparent',
+            }}>
+            {glitchedName}
+          </em>
+        </span>{' '}
         del Angel.
       </h1>
       {/* Subtitle — glitches, italic for music */}
