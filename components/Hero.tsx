@@ -78,8 +78,7 @@ export function Hero({
             }}>
             {glitchedName}
           </em>
-        </span>{' '}
-        del Angel.
+        </span>
       </h1>
       {/* Subtitle — glitches, italic for music */}
       <p
