@@ -4,3 +4,17 @@
   --font-syne: 'Syne', sans-serif;
   --font-dm-mono: 'DM Mono', monospace;
 }
+
+.bg-dev {
+  background-image: url('/keyboard.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-music {
+  background-image: url('/guitar.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

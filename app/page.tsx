@@ -74,8 +74,8 @@ export default function Home() {
 
   return (
     <main
-      className="relative min-h-screen bg-[#07090f] text-[#e2ddd6] overflow-hidden"
-      style={{ fontFamily: c.bodyFont, transition: 'font-family 0s' }}>
+      className={`relative min-h-screen text-[#e2ddd6] overflow-hidden ${mode === 'dev' ? 'bg-dev' : 'bg-music'}`}
+      style={{ fontFamily: c.bodyFont, transition: 'font-family 0s', backgroundColor: '#07090f' }}>
       {/* ── Orbs ── */}
       <Orbs
         orb1={c.orb1}
