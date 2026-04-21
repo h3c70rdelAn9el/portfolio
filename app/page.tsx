@@ -16,11 +16,12 @@ const FONT_MUSIC = 'var(--font-cormorant), serif';
 const content = {
   dev: {
     name: 'h3c70r del Angel',
-    accent: '#4f6fff',
+    accent: '#a5c8ff', // lighter blue for dev
     label: 'Full-Stack Developer',
     subtitle: 'Code is language.',
     bio: 'Full-stack d3veloper. Just making my way through the webverse — one pull request at a time.',
     pills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
+    labelBioColor: '#fff',
     pillColor: 'rgba(79,111,255,0.07)',
     pillBorder: 'rgba(79,111,255,0.35)',
     pillText: '#f3f3f3',
@@ -35,11 +36,12 @@ const content = {
   },
   music: {
     name: 'Hector del Angel',
-    accent: '#f59e0b',
+    accent: '#ffe9a7', // lighter gold for music
     label: 'Guitarist · Instructor',
     subtitle: 'Music is language.',
-    bio: "Guitarist from Los Angeles. I teach, I play, I compose. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
+    bio: "Guitarist from Los Angeles. I teach, I play, I write. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
     pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
+    labelBioColor: '#fff',
     pillColor: 'rgba(245,158,11,0.07)',
     pillBorder: 'rgba(245,158,11,0.35)',
     pillText: '#f3f3f3',

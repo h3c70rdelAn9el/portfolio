@@ -23,8 +23,14 @@ export function Hero({
       <div className="hero-overlay" />
       {/* Mode label */}
       <p
-        className="mb-5 text-xs tracking-[0.2em] uppercase transition-colors duration-500"
-        style={{ color: c.accent, fontFamily: c.bodyFont }}>
+        className="mb-5 tracking-[0.2em] uppercase transition-colors duration-500"
+        style={{
+          color: c.labelBioColor,
+          fontFamily: c.bodyFont,
+          fontSize: 'clamp(1.1rem, 2vw, 1.7rem)',
+          letterSpacing: '0.18em',
+          fontWeight: 600,
+        }}>
         {glitchedLabel}
       </p>
       {/* Heading — font switches on toggle */}
@@ -97,8 +103,13 @@ export function Hero({
       </p>
       {/* Bio — glitches */}
       <p
-        className="max-w-md text-sm leading-normal mb-4 min-h-[40px]"
-        style={{ fontFamily: c.bodyFont, color: '#f3f3f3' }}>
+        className="max-w-2xl leading-normal mb-6"
+        style={{
+          fontFamily: c.bodyFont,
+          color: c.labelBioColor,
+          fontSize: 'clamp(1.1rem, 2.1vw, 1.45rem)',
+          lineHeight: 1.7,
+        }}>
         {glitchedBio.split(/<br\s*\/?>(\s*)?/i).map((part, idx, arr) =>
           idx < arr.length - 1 ? (
             <React.Fragment key={idx}>
