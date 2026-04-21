@@ -19,6 +19,8 @@ export function Hero({
 }: HeroProps) {
   return (
     <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-8 md:px-16 pb-20">
+      {/* Dark overlay above background/vignette, below content */}
+      <div className="hero-overlay" />
       {/* Mode label */}
       <p
         className="mb-5 text-xs tracking-[0.2em] uppercase transition-colors duration-500"
@@ -27,10 +29,11 @@ export function Hero({
       </p>
       {/* Heading — font switches on toggle */}
       <h1
-        className="font-bold leading-[1.05] text-white mb-3 transition-all duration-500"
+        className="font-bold leading-[1.05] mb-3 transition-all duration-500"
         style={{
           fontFamily: c.headingFont,
           fontSize: 'clamp(36px, 6vw, 80px)',
+          color: '#f3f3f3',
         }}>
         Hey, I&apos;m
         <br />
@@ -82,19 +85,20 @@ export function Hero({
       </h1>
       {/* Subtitle — glitches, italic for music */}
       <p
-        className="mb-6 font-light text-white/50 transition-all duration-500"
+        className="mb-6 font-light transition-all duration-500"
         style={{
           fontFamily: c.headingFont,
           fontSize: 'clamp(18px, 2.5vw, 26px)',
           fontStyle: isMusic ? 'italic' : 'normal',
           minHeight: '2rem',
+          color: '#f3f3f3',
         }}>
         {glitchedSubtitle}
       </p>
       {/* Bio — glitches */}
       <p
-        className="max-w-md text-sm leading-normal text-white/40 mb-4 min-h-[40px]"
-        style={{ fontFamily: c.bodyFont }}>
+        className="max-w-md text-sm leading-normal mb-4 min-h-[40px]"
+        style={{ fontFamily: c.bodyFont, color: '#f3f3f3' }}>
         {glitchedBio.split(/<br\s*\/?>(\s*)?/i).map((part, idx, arr) =>
           idx < arr.length - 1 ? (
             <React.Fragment key={idx}>

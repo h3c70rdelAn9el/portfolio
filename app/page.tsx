@@ -22,8 +22,8 @@ const content = {
     bio: 'Full-stack d3veloper. Just making my way through the webverse — one pull request at a time.',
     pills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
     pillColor: 'rgba(79,111,255,0.07)',
-    pillBorder: 'rgba(79,111,255,0.25)',
-    pillText: 'rgba(79,111,255,0.9)',
+    pillBorder: 'rgba(79,111,255,0.35)',
+    pillText: '#f3f3f3',
     navLinks: ['About', 'Projects', 'Skills', 'Contact'],
     orb1: '#2a4fff',
     orb2: '#7c3aed',
@@ -41,8 +41,8 @@ const content = {
     bio: "Guitarist from Los Angeles. I teach, I play, I compose. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
     pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
     pillColor: 'rgba(245,158,11,0.07)',
-    pillBorder: 'rgba(245,158,11,0.25)',
-    pillText: 'rgba(245,158,11,0.9)',
+    pillBorder: 'rgba(245,158,11,0.35)',
+    pillText: '#f3f3f3',
     navLinks: ['Listen', 'Lessons', 'About', 'Contact'],
     orb1: '#f59e0b',
     orb2: '#dc2626',
@@ -50,7 +50,7 @@ const content = {
     cornerLabel: 'based in',
     cornerValue: 'Los Angeles, CA ✦',
     headingFont: FONT_MUSIC,
-    bodyFont: FONT_DEV,
+    bodyFont: FONT_MUSIC,
   },
 };
 
@@ -76,6 +76,8 @@ export default function Home() {
     <main
       className={`relative min-h-screen text-[#e2ddd6] overflow-hidden ${mode === 'dev' ? 'bg-dev' : 'bg-music'}`}
       style={{ fontFamily: c.bodyFont, transition: 'font-family 0s', backgroundColor: '#07090f' }}>
+      {/* ── Vignette Overlay ── */}
+      <div className={`vignette ${mode === 'music' ? 'vignette-music' : 'vignette-dark'}`} />
       {/* ── Orbs ── */}
       <Orbs
         orb1={c.orb1}
