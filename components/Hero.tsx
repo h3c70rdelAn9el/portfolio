@@ -19,10 +19,15 @@ export function Hero({
   c,
   isMusic,
 }: HeroProps) {
+  const nameAccent = c.heroNameAccent ?? c.accent;
+  const legibleShadow = `0 2px 20px rgba(0,0,0,0.92), 0 1px 3px rgba(0,0,0,0.85), 0 0 28px ${c.accent}33`;
+  const accentShadow = `0 2px 24px rgba(0,0,0,0.9), 0 0 42px ${nameAccent}66, 0 0 1px rgba(255,255,255,0.4)`;
+
   return (
     <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-8 md:px-16 pb-20">
-      {/* Dark overlay above background/vignette, below content */}
-      <div className="hero-overlay" />
+      {/* Dark overlay: z-0 so copy above always paints on top */}
+      <div className="hero-overlay" aria-hidden />
+      <div className="relative z-1 flex flex-col flex-1 justify-center min-h-0">
       {/* Mode label */}
       <p
         className="mb-5 tracking-[0.2em] uppercase transition-colors duration-500"
@@ -32,6 +37,7 @@ export function Hero({
           fontSize: 'clamp(1.1rem, 2vw, 1.7rem)',
           letterSpacing: '0.18em',
           fontWeight: 600,
+          textShadow: legibleShadow,
         }}>
         {glitchedLabel}
       </p>
@@ -42,6 +48,7 @@ export function Hero({
           fontFamily: c.headingFont,
           fontSize: 'clamp(36px, 6vw, 80px)',
           color: c.heroLineColor,
+          textShadow: legibleShadow,
         }}>
         Hey, I&apos;m
         <br />
@@ -81,15 +88,22 @@ export function Hero({
           <em
             className={isMusic ? 'italic' : 'not-italic'}
             style={{
-              color: c.accent,
+              color: nameAccent,
               transition: 'color 0.5s',
               position: 'relative',
               zIndex: 1,
               background: 'transparent',
+              textShadow: accentShadow,
             }}>
             {firstName}
           </em>
-          <span style={{ marginLeft: 8 }}>{lastName}</span>
+          <span
+            style={{
+              marginLeft: 8,
+              textShadow: legibleShadow,
+            }}>
+            {lastName}
+          </span>
         </span>
       </h1>
       {/* Subtitle — glitches, italic for music */}
@@ -101,6 +115,7 @@ export function Hero({
           fontStyle: isMusic ? 'italic' : 'normal',
           minHeight: '2rem',
           color: c.subtitleColor,
+          textShadow: legibleShadow,
         }}>
         {glitchedSubtitle}
       </p>
@@ -112,8 +127,9 @@ export function Hero({
           color: c.bioColor,
           fontSize: 'clamp(1.1rem, 2.1vw, 1.45rem)',
           lineHeight: 1.7,
+          textShadow: legibleShadow,
         }}>
-        {glitchedBio.split(/<br\s*\/?>(\s*)?/i).map((part, idx, arr) =>
+        {glitchedBio.split(/<br\s*\/?>\s*/i).map((part, idx, arr) =>
           idx < arr.length - 1 ? (
             <React.Fragment key={idx}>
               {part}
@@ -139,6 +155,7 @@ export function Hero({
             {pill}
           </span>
         ))}
+      </div>
       </div>
     </section>
   );
