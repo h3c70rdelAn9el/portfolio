@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { projects, Project } from '../../data/projects';
+// import { projects, Project } from './projects';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const ACCENT = '#4f6fff';
@@ -164,7 +164,7 @@ function ThumbnailCard({
 }
 
 // ── Main Projects component ───────────────────────────────────
-export function ProjectsSection() {
+export function Projects() {
   const [activeId, setActiveId] = useState(projects[0].id);
   const activeProject = projects.find((p) => p.id === activeId)!;
   const otherProjects = projects.filter((p) => p.id !== activeId);
