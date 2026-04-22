@@ -35,12 +35,16 @@ export default function Home() {
 
   useEffect(() => {
     if (mode !== 'dev') {
-      setDevFirstNameGlitch(false);
-      setDevNameRevealDone(false);
+      setTimeout(() => {
+        setDevFirstNameGlitch(false);
+        setDevNameRevealDone(false);
+      }, 0);
       return;
     }
-    setDevFirstNameGlitch(false);
-    setDevNameRevealDone(false);
+    setTimeout(() => {
+      setDevFirstNameGlitch(false);
+      setDevNameRevealDone(false);
+    }, 0);
     const startGlitch = window.setTimeout(() => setDevFirstNameGlitch(true), 2000);
     const finishReveal = window.setTimeout(() => {
       setDevFirstNameGlitch(false);
