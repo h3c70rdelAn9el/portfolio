@@ -5,7 +5,8 @@ export interface Project {
   tech: string[];
   liveUrl: string;
   repoUrl: string;
-  image: string;
+  /** Path under `public/`, e.g. `/shot.png` → `public/shot.png`. Omit until the file exists or Next image optimization errors. */
+  image?: string;
 }
 
 export const projects: Project[] = [
@@ -25,7 +26,6 @@ export const projects: Project[] = [
     tech: ['React', 'Node.js', 'MongoDB'],
     liveUrl: 'https://yoursite.com',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-two',
-    image: '/images/project2.png',
   },
   {
     id: '3',
@@ -34,7 +34,6 @@ export const projects: Project[] = [
     tech: ['TypeScript', 'Prisma', 'PostgreSQL'],
     liveUrl: 'https://yoursite.com',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-three',
-    image: '/images/project3.png',
   },
   {
     id: '4',
@@ -43,6 +42,5 @@ export const projects: Project[] = [
     tech: ['React', 'Tailwind', 'Supabase'],
     liveUrl: 'https://yoursite.com',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-four',
-    image: '/images/project4.png',
   },
 ];

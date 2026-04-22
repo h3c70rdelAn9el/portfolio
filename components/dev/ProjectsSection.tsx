@@ -25,22 +25,27 @@ function ProjectCover({
   project,
   className,
   sizes,
+  priority = false,
 }: {
   project: Project;
   className?: string;
   sizes: string;
+  /** Set on the first above-the-fold hero image to fix LCP (implies eager, high fetch priority). */
+  priority?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
-  if (!project.image || failed) {
+  const src = project.image;
+  if (!src || failed) {
     return <Placeholder title={project.title} />;
   }
   return (
     <Image
-      src={project.image}
+      src={src}
       alt={`${project.title} preview`}
       fill
       className={className}
       sizes={sizes}
+      priority={priority}
       onError={() => setFailed(true)}
     />
   );
@@ -77,7 +82,7 @@ function IconGitHub() {
 }
 
 // ── Featured card ─────────────────────────────────────────────
-function FeaturedCard({ project }: { project: Project }) {
+function FeaturedCard({ project, imagePriority }: { project: Project; imagePriority: boolean }) {
   return (
     <motion.div
       key={project.id}
@@ -91,6 +96,7 @@ function FeaturedCard({ project }: { project: Project }) {
           project={project}
           className="object-cover object-top"
           sizes="(min-width: 1024px) 55vw, 100vw"
+          priority={imagePriority}
         />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#07090f] via-transparent to-transparent" />
@@ -229,6 +235,7 @@ export function ProjectsSection() {
           <FeaturedCard
             key={activeId}
             project={activeProject}
+            imagePriority={activeId === projects[0].id}
           />
         </AnimatePresence>
 
