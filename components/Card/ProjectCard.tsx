@@ -2,22 +2,23 @@ import { motion } from 'framer-motion';
 import { Project } from '../../data/projects';
 import { IconExternal, IconGitHub, ProjectCover } from './shared';
 import { TechPills } from '../TechPills';
-
-const FONT_DEV = 'var(--font-space), sans-serif';
+import { ACCENT, FONT_DEV } from '../constants';
 
 export function ProjectCard({
   project,
   imagePriority,
+  accentColor = ACCENT,
 }: {
   project: Project;
   imagePriority?: boolean;
+  accentColor?: string;
 }) {
   return (
     <motion.div
       key={project.id}
       layoutId={`card-${project.id}`}
-      className="relative w-full h-full flex flex-col rounded-2xl border-2 border-[#4f6fff] bg-white/5 backdrop-blur-xl overflow-hidden"
-      style={{ fontFamily: FONT_DEV }}
+      className="relative w-full h-full flex flex-col rounded-2xl border-2 bg-white/5 backdrop-blur-xl overflow-hidden"
+      style={{ fontFamily: FONT_DEV, borderColor: accentColor }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
       {/* Screenshot */}
       <div className="relative w-full h-[55%] min-h-0 overflow-hidden">
@@ -39,7 +40,7 @@ export function ProjectCard({
         <p className="text-sm text-white/40 leading-relaxed mb-4">{project.description}</p>
         <TechPills
           tech={project.tech}
-          accentColor="#4f6fff"
+          accentColor={accentColor}
         />
         <div className="flex items-center gap-3">
           <a

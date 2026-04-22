@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion';
 import { Project } from '../../data/projects';
 import { ProjectCover } from './shared';
-
-const FONT_DEV = 'var(--font-space), sans-serif';
-const ACCENT = '#4f6fff';
+import { ACCENT, FONT_DEV } from '../constants';
 
 export function ThumbnailCard({
   project,
   isActive,
   onClick,
+  accentColor = ACCENT,
 }: {
   project: Project;
   isActive: boolean;
   onClick: () => void;
+  accentColor?: string;
 }) {
   return (
     <motion.button
@@ -20,7 +20,7 @@ export function ThumbnailCard({
       onClick={onClick}
       className="relative w-full rounded-xl border-2 overflow-hidden text-left cursor-pointer transition-all duration-300"
       style={{
-        borderColor: isActive ? ACCENT : '#4f6fff',
+        borderColor: isActive ? accentColor : '#4f6fff',
         background: isActive ? 'rgba(79,111,255,0.08)' : 'rgba(255,255,255,0.03)',
         fontFamily: FONT_DEV,
       }}
@@ -47,7 +47,7 @@ export function ThumbnailCard({
         <motion.div
           layoutId="active-indicator"
           className="absolute left-0 top-0 bottom-0 w-[2px] rounded-full"
-          style={{ background: ACCENT }}
+          style={{ background: accentColor }}
         />
       )}
     </motion.button>

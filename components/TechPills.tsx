@@ -1,9 +1,11 @@
+import { ACCENT } from './constants';
+
 interface TechPillsProps {
   tech: string[];
   accentColor?: string;
 }
 
-export function TechPills({ tech, accentColor = '#4f6fff' }: TechPillsProps) {
+export function TechPills({ tech, accentColor = ACCENT }: TechPillsProps) {
   return (
     <div className="flex flex-wrap gap-2 mb-6">
       {tech.map((t) => (

@@ -11,7 +11,7 @@ import { ThumbnailCard } from '../Card/ThumbnailCard';
 export function ProjectsSection() {
   const [activeId, setActiveId] = useState(projects[0].id);
   const activeProject = projects.find((p) => p.id === activeId)!;
-  const otherProjects = projects.filter((p) => p.id !== activeId);
+  const ACCENT = '#4f6fff';
 
   return (
     <section
@@ -20,7 +20,7 @@ export function ProjectsSection() {
       <SectionHeader
         title="Projects"
         subtitle="Selected work"
-        accentColor="#4f6fff"
+        accentColor={ACCENT}
       />
 
       {/* Grid */}
@@ -31,6 +31,7 @@ export function ProjectsSection() {
             key={activeId}
             project={activeProject}
             imagePriority={activeId === projects[0].id}
+            accentColor={ACCENT}
           />
         </AnimatePresence>
 
@@ -42,6 +43,7 @@ export function ProjectsSection() {
               project={p}
               isActive={p.id === activeId}
               onClick={() => setActiveId(p.id)}
+              accentColor={ACCENT}
             />
           ))}
         </div>
