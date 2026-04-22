@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../Card/ProjectCard';
+import { SectionHeader } from '../SectionHeader';
 import { ThumbnailCard } from '../Card/ThumbnailCard';
 
 // ── Main Projects component ───────────────────────────────────
@@ -16,11 +17,11 @@ export function ProjectsSection() {
     <section
       id="projects"
       className="relative z-10 px-8 md:px-16 py-24">
-      {/* Section header */}
-      <div className="mb-12">
-        <p className="text-xs tracking-[0.2em] uppercase mb-3 text-[#4f6fff]">Selected work</p>
-        <h2 className="text-3xl md:text-4xl font-bold text-white">Projects</h2>
-      </div>
+      <SectionHeader
+        title="Projects"
+        subtitle="Selected work"
+        accentColor="#4f6fff"
+      />
 
       {/* Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-4 h-[520px]">

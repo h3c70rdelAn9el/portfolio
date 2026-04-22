@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Project } from '../../data/projects';
 import { IconExternal, IconGitHub, ProjectCover } from './shared';
+import { TechPills } from '../TechPills';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 
@@ -15,7 +16,7 @@ export function ProjectCard({
     <motion.div
       key={project.id}
       layoutId={`card-${project.id}`}
-      className="relative w-full h-full flex flex-col rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
+      className="relative w-full h-full flex flex-col rounded-2xl border-2 border-[#4f6fff] bg-white/5 backdrop-blur-xl overflow-hidden"
       style={{ fontFamily: FONT_DEV }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
       {/* Screenshot */}
@@ -36,20 +37,10 @@ export function ProjectCard({
         transition={{ delay: 0.15 }}>
         <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
         <p className="text-sm text-white/40 leading-relaxed mb-4">{project.description}</p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((t) => (
-            <span
-              key={t}
-              className="rounded-full px-3 py-1 text-[11px] tracking-wider border"
-              style={{
-                background: 'rgba(79,111,255,0.07)',
-                borderColor: 'rgba(79,111,255,0.25)',
-                color: 'rgba(79,111,255,0.9)',
-              }}>
-              {t}
-            </span>
-          ))}
-        </div>
+        <TechPills
+          tech={project.tech}
+          accentColor="#4f6fff"
+        />
         <div className="flex items-center gap-3">
           <a
             href={project.liveUrl}
