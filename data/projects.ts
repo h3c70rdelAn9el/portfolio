@@ -13,10 +13,10 @@ export const projects: Project[] = [
     id: '1',
     title: 'Project One',
     description: 'A short description of what this project does and the problem it solves.',
-    tech: ['Next.js', 'TypeScript', 'Tailwind'],
-    liveUrl: 'https://yoursite.com',
+    tech: ['Laravel', 'Vue.js', 'MySQL'],
+    liveUrl: 'https://fosh.live',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-one',
-    image: '/images/project1.png',
+    image: '/fosh_map.png',
   },
   {
     id: '2',

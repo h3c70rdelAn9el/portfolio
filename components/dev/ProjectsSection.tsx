@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects, Project } from '../../data/projects';
 
@@ -17,6 +18,31 @@ function Placeholder({ title }: { title: string }) {
         {title}
       </span>
     </div>
+  );
+}
+
+function ProjectCover({
+  project,
+  className,
+  sizes,
+}: {
+  project: Project;
+  className?: string;
+  sizes: string;
+}) {
+  const [failed, setFailed] = useState(false);
+  if (!project.image || failed) {
+    return <Placeholder title={project.title} />;
+  }
+  return (
+    <Image
+      src={project.image}
+      alt={`${project.title} preview`}
+      fill
+      className={className}
+      sizes={sizes}
+      onError={() => setFailed(true)}
+    />
   );
 }
 
@@ -60,8 +86,12 @@ function FeaturedCard({ project }: { project: Project }) {
       style={{ fontFamily: FONT_DEV }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
       {/* Screenshot */}
-      <div className="relative w-full h-[55%] overflow-hidden">
-        <Placeholder title={project.title} />
+      <div className="relative w-full h-[55%] min-h-0 overflow-hidden">
+        <ProjectCover
+          project={project}
+          className="object-cover object-top"
+          sizes="(min-width: 1024px) 55vw, 100vw"
+        />
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#07090f] via-transparent to-transparent" />
       </div>
@@ -139,8 +169,12 @@ function ThumbnailCard({
       whileTap={{ scale: 0.98 }}
       transition={{ type: 'spring', stiffness: 300, damping: 25 }}>
       {/* Thumbnail image */}
-      <div className="h-20 overflow-hidden">
-        <Placeholder title={project.title} />
+      <div className="relative h-20 w-full overflow-hidden">
+        <ProjectCover
+          project={project}
+          className="object-cover object-top"
+          sizes="280px"
+        />
       </div>
 
       {/* Title + tech */}
