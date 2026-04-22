@@ -29,24 +29,31 @@ export function Nav({
         hda<span style={{ color: accent, transition: 'color 0.5s' }}>.</span>
       </span>
       <div className="hidden md:flex items-center gap-8">
-        {navLinks.map((l) => (
-          <a
-            key={l}
-            href={`#${l.toLowerCase()}`}
-            className="text-xs tracking-widest uppercase transition-colors duration-300"
-            style={{
-              fontFamily: FONT_DEV,
-              color: linkColor,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.color = linkHoverColor;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.color = linkColor;
-            }}>
-            {l}
-          </a>
-        ))}
+        {navLinks.map((l) => {
+          let href = `#${l.toLowerCase()}`;
+          // Special case for About in dev mode
+          if (!isMusic && l.toLowerCase() === 'about') {
+            href = '/dev/about';
+          }
+          return (
+            <a
+              key={l}
+              href={href}
+              className="text-xs tracking-widest uppercase transition-colors duration-300"
+              style={{
+                fontFamily: FONT_DEV,
+                color: linkColor,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = linkHoverColor;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = linkColor;
+              }}>
+              {l}
+            </a>
+          );
+        })}
       </div>
       <button
         onClick={onToggle}

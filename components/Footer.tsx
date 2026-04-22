@@ -1,6 +1,6 @@
 'use client';
 
-// import { useMode } from "@/context/ModeContext";
+import { useMode } from './ModeContext';
 
 const socials = [
   {

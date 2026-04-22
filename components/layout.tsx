@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Mono } from "next/font/google";
-import { ModeProvider } from "@/context/ModeContext";
+import { ModeProvider } from "./ModeContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";

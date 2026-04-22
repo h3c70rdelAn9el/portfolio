@@ -1,14 +1,3 @@
-import type { HeroContent } from './interfaces';
-
-export interface HeroProps {
-  glitchedLabel: string;
-  glitchedSubtitle: string;
-  glitchedBio: string;
-  firstName: string;
-  lastName: string;
-  c: HeroContent;
-  isMusic: boolean;
-}
 // Central place for shared TypeScript interfaces and types
 
 export interface HeroContent {
@@ -37,6 +26,16 @@ export interface HeroContent {
   navBrandColor: string;
   navLinkColor: string;
   navLinkHover: string;
+}
+
+export interface HeroProps {
+  glitchedLabel: string;
+  glitchedSubtitle: string;
+  glitchedBio: string;
+  firstName: string;
+  lastName: string;
+  c: HeroContent;
+  isMusic: boolean;
 }
 
 // Add more interfaces/types here as your project grows
