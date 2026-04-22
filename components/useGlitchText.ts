@@ -7,7 +7,10 @@ export function useGlitchText(target: string, trigger: boolean) {
   const frameRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!trigger) return;
+    if (!trigger) {
+      setDisplay(target);
+      return;
+    }
     let iteration = 0;
     const total = 10;
 

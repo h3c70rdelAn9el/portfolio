@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGlitchText } from '../components/useGlitchText';
 import { SocialLinks } from '../components/SocialLinks';
 import { socials } from '../components/socials';
@@ -21,10 +21,13 @@ const content = {
     subtitle: 'Code is language.',
     bio: 'Full-stack d3veloper. Just making my way through the webverse — one pull request at a time.',
     pills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
-    labelBioColor: '#fff',
+    labelBioColor: '#f4f7fc',
+    subtitleColor: '#ffffff',
+    bioColor: '#f3f7ff',
+    heroLineColor: '#eef2f8',
     pillColor: 'rgba(79,111,255,0.07)',
     pillBorder: 'rgba(79,111,255,0.35)',
-    pillText: '#f3f3f3',
+    pillText: '#f2f5fa',
     navLinks: ['About', 'Projects', 'Skills', 'Contact'],
     orb1: '#2a4fff',
     orb2: '#7c3aed',
@@ -41,10 +44,13 @@ const content = {
     subtitle: 'Music is language.',
     bio: "Guitarist from Los Angeles. I teach, I play, I write. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
     pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
-    labelBioColor: '#fff',
+    labelBioColor: '#fff8f0',
+    subtitleColor: '#ffffff',
+    bioColor: '#fffaf2',
+    heroLineColor: '#fff5e8',
     pillColor: 'rgba(245,158,11,0.07)',
     pillBorder: 'rgba(245,158,11,0.35)',
-    pillText: '#f3f3f3',
+    pillText: '#fff6eb',
     navLinks: ['Listen', 'Lessons', 'About', 'Contact'],
     orb1: '#f59e0b',
     orb2: '#dc2626',
@@ -56,17 +62,56 @@ const content = {
   },
 };
 
+const NAME_REST = ' del Angel';
+/** Dev hero: glitch-reveal only this part (after delay), not the handle. */
+const DEV_FIRST_ALIAS = 'h3c70r';
+const DEV_FIRST_REVEALED = 'Hector';
+const DEV_NAME_GLITCH_MS = 480;
+
 // ── Component ─────────────────────────────────────────────────
 export default function Home() {
   const [mode, setMode] = useState<'dev' | 'music'>('dev');
   const [glitching, setGlitching] = useState(false);
+  const [devFirstNameGlitch, setDevFirstNameGlitch] = useState(false);
+  const [devNameRevealDone, setDevNameRevealDone] = useState(false);
   const c = content[mode];
   const isMusic = mode === 'music';
+
+  useEffect(() => {
+    if (mode !== 'dev') {
+      setDevFirstNameGlitch(false);
+      setDevNameRevealDone(false);
+      return;
+    }
+    setDevFirstNameGlitch(false);
+    setDevNameRevealDone(false);
+    const startGlitch = window.setTimeout(() => setDevFirstNameGlitch(true), 2000);
+    const finishReveal = window.setTimeout(() => {
+      setDevFirstNameGlitch(false);
+      setDevNameRevealDone(true);
+    }, 2000 + DEV_NAME_GLITCH_MS);
+    return () => {
+      window.clearTimeout(startGlitch);
+      window.clearTimeout(finishReveal);
+    };
+  }, [mode]);
+
+  // Always call the hook at the top level
+  const glitchedDevFirstName = useGlitchText(DEV_FIRST_ALIAS, devFirstNameGlitch);
 
   const glitchedLabel = useGlitchText(c.label, glitching);
   const glitchedSubtitle = useGlitchText(c.subtitle, glitching);
   const glitchedBio = useGlitchText(c.bio, glitching);
-  const glitchedName = useGlitchText(c.name, glitching);
+  const glitchedMusicName = useGlitchText(content.music.name, glitching);
+  const glitchedDevFirst = useGlitchText(DEV_FIRST_REVEALED, devFirstNameGlitch);
+
+  const glitchedName = isMusic
+    ? glitchedMusicName
+    : devNameRevealDone
+      ? `${DEV_FIRST_REVEALED}${NAME_REST}`
+      : devFirstNameGlitch
+        ? `${glitchedDevFirst}${NAME_REST}`
+        : `${DEV_FIRST_ALIAS}${NAME_REST}`;
 
   const handleToggle = () => {
     setGlitching(true);
@@ -76,7 +121,7 @@ export default function Home() {
 
   return (
     <main
-      className={`relative min-h-screen text-[#e2ddd6] overflow-hidden ${mode === 'dev' ? 'bg-dev' : 'bg-music'}`}
+      className={`relative min-h-screen text-[#f2ebe0] overflow-hidden ${mode === 'dev' ? 'bg-dev' : 'bg-music'}`}
       style={{ fontFamily: c.bodyFont, transition: 'font-family 0s', backgroundColor: '#07090f' }}>
       {/* ── Vignette Overlay ── */}
       <div className={`vignette ${mode === 'music' ? 'vignette-music' : 'vignette-dark'}`} />
@@ -111,7 +156,14 @@ export default function Home() {
         glitchedLabel={glitchedLabel}
         glitchedSubtitle={glitchedSubtitle}
         glitchedBio={glitchedBio}
-        glitchedName={glitchedName}
+        firstName={
+          isMusic
+            ? c.name.split(' ')[0]
+            : devNameRevealDone
+              ? DEV_FIRST_REVEALED
+              : glitchedDevFirstName
+        }
+        lastName={isMusic ? c.name.split(' ').slice(1).join(' ') : NAME_REST.trim()}
         c={c}
         isMusic={isMusic}
       />

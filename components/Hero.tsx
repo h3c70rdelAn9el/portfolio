@@ -4,7 +4,8 @@ interface HeroProps {
   glitchedLabel: string;
   glitchedSubtitle: string;
   glitchedBio: string;
-  glitchedName: string;
+  firstName: string;
+  lastName: string;
   c: any;
   isMusic: boolean;
 }
@@ -13,7 +14,8 @@ export function Hero({
   glitchedLabel,
   glitchedSubtitle,
   glitchedBio,
-  glitchedName,
+  firstName,
+  lastName,
   c,
   isMusic,
 }: HeroProps) {
@@ -39,7 +41,7 @@ export function Hero({
         style={{
           fontFamily: c.headingFont,
           fontSize: 'clamp(36px, 6vw, 80px)',
-          color: '#f3f3f3',
+          color: c.heroLineColor,
         }}>
         Hey, I&apos;m
         <br />
@@ -85,8 +87,9 @@ export function Hero({
               zIndex: 1,
               background: 'transparent',
             }}>
-            {glitchedName}
+            {firstName}
           </em>
+          <span style={{ marginLeft: 8 }}>{lastName}</span>
         </span>
       </h1>
       {/* Subtitle — glitches, italic for music */}
@@ -97,7 +100,7 @@ export function Hero({
           fontSize: 'clamp(18px, 2.5vw, 26px)',
           fontStyle: isMusic ? 'italic' : 'normal',
           minHeight: '2rem',
-          color: '#f3f3f3',
+          color: c.subtitleColor,
         }}>
         {glitchedSubtitle}
       </p>
@@ -106,7 +109,7 @@ export function Hero({
         className="max-w-2xl leading-normal mb-6"
         style={{
           fontFamily: c.bodyFont,
-          color: c.labelBioColor,
+          color: c.bioColor,
           fontSize: 'clamp(1.1rem, 2.1vw, 1.45rem)',
           lineHeight: 1.7,
         }}>
