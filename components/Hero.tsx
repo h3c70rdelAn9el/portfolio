@@ -15,12 +15,7 @@ export function Hero({
   const accentShadow = `0 2px 24px rgba(0,0,0,0.9), 0 0 42px ${nameAccent}66, 0 0 1px rgba(255,255,255,0.4)`;
 
   return (
-    <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-8 md:px-16 pb-20">
-      {/* Dark overlay: z-0 so copy above always paints on top */}
-      <div
-        className="hero-overlay"
-        aria-hidden
-      />
+    <section className="relative z-10 flex flex-col justify-center min-h-[calc(100vh-88px)] px-0">
       <div className="relative z-1 flex flex-col flex-1 justify-center min-h-0">
         {/* Mode label */}
         <p

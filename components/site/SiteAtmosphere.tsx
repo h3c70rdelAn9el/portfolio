@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Orbs } from '../Orbs';
 import { content } from '../../types/content';
 
@@ -7,18 +8,21 @@ const HERO_BG_MUSIC = '/fretboard.jpeg';
 type SiteMode = 'dev' | 'music';
 
 /**
- * Full-bleed background: dual photos, vignette, orbs, grid — same markup as the home page
- * so /dev/* and /music/* look identical to `/` for a given mode.
+ * Full-bleed background: dual photos, vignette, orbs, grid. Pinned to the viewport
+ * (`fixed`) so it does not resize when the document height changes between routes.
  */
-export function SiteAtmosphere({ mode }: { mode: SiteMode }) {
+function SiteAtmosphereImpl({ mode }: { mode: SiteMode }) {
   const c = content[mode];
   const isMusic = mode === 'music';
 
+  // Fixed to the viewport, not the scroll/tall min-h parent: `absolute inset-0` on a
+  // `min-h-screen` block grows with page height, so bg-cover re-crops on every route —
+  // reads as the photo/orbs "jumping" with About vs Home.
   return (
-    <>
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        aria-hidden>
+    <div
+      className="pointer-events-none fixed inset-0 z-0 w-full transform-gpu"
+      aria-hidden>
+      <div className="absolute inset-0">
         <div className="absolute inset-0 isolate">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out"
@@ -53,6 +57,8 @@ export function SiteAtmosphere({ mode }: { mode: SiteMode }) {
           backgroundSize: '60px 60px',
         }}
       />
-    </>
+    </div>
   );
 }
+
+export const SiteAtmosphere = memo(SiteAtmosphereImpl);

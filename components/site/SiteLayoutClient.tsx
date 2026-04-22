@@ -26,7 +26,13 @@ export function SiteLayoutClient({ children }: { children: React.ReactNode }) {
   const onDevPath = pathname.startsWith('/dev/');
   const isHome = pathname === '/';
 
+  // Nav copy, corner, and fonts: dev subroutes use the dev *content* set; home follows the
+  // hda toggle. (About/Projects are still the “dev” section in terms of copy.)
   const shellMode: 'dev' | 'music' = onMusicPath ? 'music' : onDevPath ? 'dev' : homeViewMode;
+  // Background photos/orbs: never force-switch when entering `/dev/*` from home. Using
+  // `homeViewMode` here was causing a 700ms crossfade (keyboard↔fretboard) and read as
+  // a “background refresh” on home ↔ about.
+  const atmosphereMode: 'dev' | 'music' = onMusicPath ? 'music' : homeViewMode;
   const c = content[shellMode];
   const isMusicForNav = onMusicPath || (isHome && homeViewMode === 'music');
   const cornerFont = shellMode === 'music' ? FONT_MUSIC : FONT_DEV;
@@ -49,7 +55,7 @@ export function SiteLayoutClient({ children }: { children: React.ReactNode }) {
     <div
       className="relative min-h-screen overflow-hidden text-[#f2ebe0]"
       style={{ fontFamily: c.bodyFont, transition: 'font-family 0s', backgroundColor: '#07090f' }}>
-      <SiteAtmosphere mode={shellMode} />
+      <SiteAtmosphere mode={atmosphereMode} />
 
       <Nav
         navLinks={c.navLinks}
@@ -62,18 +68,14 @@ export function SiteLayoutClient({ children }: { children: React.ReactNode }) {
         brandHref={isHome ? undefined : '/'}
       />
 
-      <div
-        className={
-          isHome
-            ? 'relative z-10 flex w-full min-h-0 flex-col'
-            : 'relative z-10 flex w-full min-h-[calc(100vh-88px)] flex-col px-8 pb-20 pt-6 md:px-16'
-        }>
-        {!isHome && (
-          <div
-            className="hero-overlay"
-            aria-hidden
-          />
-        )}
+      {/* One shared content column: scrim stays mounted on route changes (home used to
+          omit it while Hero’s overlay was inside the fading page — caused a one-frame
+          “background refresh” when leaving About, etc.) */}
+      <div className="relative z-10 flex w-full min-h-[calc(100vh-88px)] flex-col px-8 pb-20 pt-6 md:px-16">
+        <div
+          className="hero-overlay"
+          aria-hidden
+        />
         <div
           className={
             isHome
