@@ -22,8 +22,7 @@ export function Nav({
   linkHoverColor,
 }: NavProps) {
   return (
-    <nav
-      className="sticky top-0 z-50 flex w-full items-center justify-between border-b border-white/10 bg-black/15 px-8 py-7 backdrop-blur-2xl backdrop-saturate-150 md:px-16">
+    <nav className="sticky top-0 z-50 flex w-full items-center justify-between  bg-black/15 px-8 py-7 backdrop-blur-2xl backdrop-saturate-150 md:px-16 ">
       <span
         className="text-lg font-bold tracking-tight transition-colors duration-500"
         style={{ fontFamily: FONT_DEV, color: brandColor }}>

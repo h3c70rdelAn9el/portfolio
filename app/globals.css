@@ -31,6 +31,13 @@
   );
   mix-blend-mode: multiply;
 }
+
+/* Remove or soften top border, add shadow instead */
+.soft-top-shadow {
+  border-top: none !important;
+  box-shadow: 0 -6px 24px -8px rgba(0, 0, 0, 0.32);
+}
+
 @import 'tailwindcss';
 
 @theme {
