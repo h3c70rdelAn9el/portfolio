@@ -87,7 +87,7 @@ function FeaturedCard({ project, imagePriority }: { project: Project; imagePrior
     <motion.div
       key={project.id}
       layoutId={`card-${project.id}`}
-      className="relative w-full h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
+      className="relative w-full h-full flex flex-col rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden"
       style={{ fontFamily: FONT_DEV }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
       {/* Screenshot */}
@@ -104,7 +104,7 @@ function FeaturedCard({ project, imagePriority }: { project: Project; imagePrior
 
       {/* Content */}
       <motion.div
-        className="p-6"
+        className="p-6 flex-1 min-h-0 overflow-y-auto"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.15 }}>
@@ -165,9 +165,9 @@ function ThumbnailCard({
     <motion.button
       layoutId={`card-${project.id}`}
       onClick={onClick}
-      className="relative w-full rounded-xl border overflow-hidden text-left cursor-pointer transition-all duration-300"
+      className="relative w-full rounded-xl border-2 overflow-hidden text-left cursor-pointer transition-all duration-300"
       style={{
-        borderColor: isActive ? ACCENT + '55' : 'rgba(255,255,255,0.08)',
+        borderColor: isActive ? ACCENT : '#4f6fff',
         background: isActive ? 'rgba(79,111,255,0.08)' : 'rgba(255,255,255,0.03)',
         fontFamily: FONT_DEV,
       }}
