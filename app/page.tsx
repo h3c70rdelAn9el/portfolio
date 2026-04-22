@@ -76,6 +76,9 @@ const DEV_FIRST_ALIAS = 'h3c70r';
 const DEV_FIRST_REVEALED = 'Hector';
 const DEV_NAME_GLITCH_MS = 480;
 
+const HERO_BG_DEV = '/keyboard.jpeg';
+const HERO_BG_MUSIC = '/fretboard.jpeg';
+
 // ── Component ─────────────────────────────────────────────────
 export default function Home() {
   const [mode, setMode] = useState<'dev' | 'music'>('dev');
@@ -129,10 +132,28 @@ export default function Home() {
 
   return (
     <main
-      className={`relative min-h-screen text-[#f2ebe0] overflow-hidden ${mode === 'dev' ? 'bg-dev' : 'bg-music'}`}
+      className="relative min-h-screen overflow-hidden text-[#f2ebe0]"
       style={{ fontFamily: c.bodyFont, transition: 'font-family 0s', backgroundColor: '#07090f' }}>
-      {/* ── Vignette Overlay ── */}
-      <div className={`vignette ${mode === 'music' ? 'vignette-music' : 'vignette-dark'}`} />
+      {/* Isolate only the crossfading photos so they flatten like one bg layer; vignette stays outside (same order as pre-fade: photo → multiply) */}
+      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+        <div className="absolute inset-0 isolate">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out"
+            style={{
+              backgroundImage: `url(${HERO_BG_DEV})`,
+              opacity: isMusic ? 0 : 1,
+            }}
+          />
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out"
+            style={{
+              backgroundImage: `url(${HERO_BG_MUSIC})`,
+              opacity: isMusic ? 1 : 0,
+            }}
+          />
+        </div>
+        <div className={`vignette ${mode === 'music' ? 'vignette-music' : 'vignette-dark'}`} />
+      </div>
       {/* ── Orbs ── */}
       <Orbs
         orb1={c.orb1}
