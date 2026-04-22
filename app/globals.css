@@ -1,3 +1,7 @@
+/* Custom blue glow shadow utility */
+.shadow-blue-glow {
+  box-shadow: 0 0 32px 0 rgba(79, 111, 255, 0.28) !important;
+}
 /* Avoid horizontal jump when a route change toggles the vertical scrollbar. */
 html {
   scrollbar-gutter: stable;

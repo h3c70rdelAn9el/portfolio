@@ -18,7 +18,7 @@ export function ThumbnailCard({
     <motion.button
       layoutId={`card-${project.id}`}
       onClick={onClick}
-      className="relative w-full rounded-xl border-2 overflow-hidden text-left cursor-pointer transition-all duration-300"
+      className="relative w-full rounded-xl border-2 overflow-hidden text-left cursor-pointer transition-all duration-200 shadow-none hover:shadow-lg hover:shadow-blue-900"
       style={{
         borderColor: isActive ? accentColor : '#4f6fff',
         background: isActive ? 'rgba(79,111,255,0.08)' : 'rgba(255,255,255,0.03)',

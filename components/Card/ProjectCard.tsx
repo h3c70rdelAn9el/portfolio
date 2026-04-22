@@ -17,7 +17,7 @@ export function ProjectCard({
     <motion.div
       key={project.id}
       layoutId={`card-${project.id}`}
-      className="relative w-full h-full flex flex-col rounded-2xl border-2 bg-white/5 backdrop-blur-xl overflow-hidden"
+      className="relative w-full h-full flex flex-col rounded-2xl border bg-white/5 backdrop-blur-xl overflow-hidden shadow-xl shadow-blue-900 duration-300"
       style={{ fontFamily: FONT_DEV, borderColor: accentColor }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
       {/* Screenshot */}
