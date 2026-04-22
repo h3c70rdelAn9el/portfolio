@@ -7,9 +7,10 @@ export function useGlitchText(target: string, trigger: boolean) {
   const frameRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
+    if (frameRef.current) clearTimeout(frameRef.current);
     if (!trigger) {
-      setDisplay(target);
-      return;
+      const id = requestAnimationFrame(() => setDisplay(target));
+      return () => cancelAnimationFrame(id);
     }
     let iteration = 0;
     const total = 10;
@@ -20,8 +21,8 @@ export function useGlitchText(target: string, trigger: boolean) {
           .split('')
           .map((char, i) => {
             if (char === ' ') return ' ';
-            if (i < iteration) return target[i];
-            return CHARS[Math.floor(Math.random() * CHARS.length)];
+            if (i < iteration) return target[i]!;
+            return CHARS[Math.floor(Math.random() * CHARS.length)]!;
           })
           .join(''),
       );
