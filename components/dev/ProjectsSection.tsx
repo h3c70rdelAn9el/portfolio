@@ -36,7 +36,7 @@ export function ProjectsSection() {
         </AnimatePresence>
 
         {/* Thumbnails — right */}
-        <div className="flex flex-col gap-3 overflow-y-auto pr-1">
+        <div className="flex flex-col gap-3 overflow-y-auto pr-1 pl-4">
           {projects.map((p) => (
             <ThumbnailCard
               key={p.id}
