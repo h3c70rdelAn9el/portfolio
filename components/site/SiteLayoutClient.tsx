@@ -3,7 +3,6 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { CornerCard } from '../CornerCard';
 import { Nav } from '../Nav';
-import { PageTransition } from '../PageTransition';
 import { SocialLinks } from '../SocialLinks';
 import { socials } from '../socials';
 import { content } from '../../types/content';
@@ -15,7 +14,8 @@ const FONT_MUSIC = 'var(--font-cormorant), serif';
 
 /**
  * One persistent shell for `/`, `/dev/*`, `/music` so the background + nav stay put
- * while the main column cross-fades (`PageTransition`) between the hero and inner pages.
+ * while the main column (`children`) swaps on navigation — no Framer/opacity wrapper
+ * (that stack was causing visible blinks: exit-then-wait, double opacity, and rAF races).
  */
 export function SiteLayoutClient({ children }: { children: React.ReactNode }) {
   const pathname = usePathname() ?? '/';
@@ -82,7 +82,7 @@ export function SiteLayoutClient({ children }: { children: React.ReactNode }) {
               ? 'relative z-1 w-full min-h-0 flex-1'
               : 'relative z-1 mx-auto w-full min-h-0 max-w-3xl flex-1'
           }>
-          <PageTransition>{children}</PageTransition>
+          {children}
         </div>
       </div>
 
