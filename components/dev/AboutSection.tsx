@@ -1,4 +1,4 @@
-export default function About() {
+export function AboutSection() {
   return (
     <section className="max-w-2xl py-10 md:py-12">
       <h1 className="mb-4 text-3xl font-semibold tracking-tight text-[#edf2ff] md:text-4xl">About</h1>

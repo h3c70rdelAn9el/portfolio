@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import type { DevSection } from './site/DevViewContext';
 import React from 'react';
 
 interface NavProps {
@@ -9,8 +12,13 @@ interface NavProps {
   brandColor: string;
   linkColor: string;
   linkHoverColor: string;
-  /** When set, the brand becomes a link (e.g. home from /dev/* routes). */
-  brandHref?: string;
+  /** HDA is plain text (no link) on the dev home hero. */
+  isDevHomeHero: boolean;
+  /** HDA and / target home without a Next full navigation. */
+  onBrandHome: () => void;
+  /** Use pushState + context for /dev/* instead of <Link> (avoids remounting the page slot). */
+  useClientDevNav: boolean;
+  onDevClientNav: (s: DevSection) => void;
 }
 
 const FONT_DEV = 'var(--font-space), sans-serif';
@@ -23,7 +31,10 @@ export function Nav({
   brandColor,
   linkColor,
   linkHoverColor,
-  brandHref,
+  isDevHomeHero,
+  onBrandHome,
+  useClientDevNav,
+  onDevClientNav,
 }: NavProps) {
   const linkClassName =
     'text-[0.62rem] tracking-wider uppercase transition-colors duration-300 sm:tracking-widest sm:text-xs';
@@ -44,19 +55,24 @@ export function Nav({
 
   return (
     <nav className="sticky top-0 z-50 flex w-full items-center justify-between  bg-black/15 px-8 py-7 backdrop-blur-2xl backdrop-saturate-150 md:px-16 ">
-      {brandHref ? (
-        <Link
-          href={brandHref}
-          className={brandClassName}
-          style={{ fontFamily: FONT_DEV, color: brandColor }}>
-          {brand}
-        </Link>
-      ) : (
+      {isDevHomeHero ? (
         <span
           className={brandClassName}
           style={{ fontFamily: FONT_DEV, color: brandColor }}>
           {brand}
         </span>
+      ) : (
+        <Link
+          href="/"
+          scroll={false}
+          className={brandClassName}
+          style={{ fontFamily: FONT_DEV, color: brandColor, cursor: 'pointer' }}
+          onClick={(e) => {
+            e.preventDefault();
+            onBrandHome();
+          }}>
+          {brand}
+        </Link>
       )}
       <div
         className="mx-1 flex min-w-0 max-w-[min(100%,58vw)] flex-1 items-center justify-center gap-1.5 overflow-x-auto whitespace-nowrap sm:max-w-none sm:gap-3 md:mx-0 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -71,6 +87,24 @@ export function Nav({
           }
           const isClientRoute = href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
           if (isClientRoute) {
+            if (useClientDevNav && (l.toLowerCase() === 'about' || l.toLowerCase() === 'projects')) {
+              return (
+                <Link
+                  key={l}
+                  href={href}
+                  scroll={false}
+                  className={linkClassName}
+                  style={linkStyle}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onDevClientNav(l.toLowerCase() === 'about' ? 'about' : 'projects');
+                  }}
+                  onMouseEnter={(e) => setHover(e, linkHoverColor)}
+                  onMouseLeave={(e) => setHover(e, linkColor)}>
+                  {l}
+                </Link>
+              );
+            }
             return (
               <Link
                 key={l}

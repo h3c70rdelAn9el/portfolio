@@ -5,6 +5,10 @@ import { useGlitchText } from '../../components/useGlitchText';
 import { Hero } from '../../components/Hero';
 import { content } from '../../types/content';
 import { useSiteMode } from '../../components/site/SiteModeContext';
+import { useDevView } from '../../components/site/DevViewContext';
+import { PageTransition } from '../../components/PageTransition';
+import { AboutSection } from '../../components/dev/AboutSection';
+import { ProjectsSection } from '../../components/dev/ProjectsSection';
 
 const NAME_REST = ' del Angel';
 const DEV_FIRST_ALIAS = 'h3c70r';
@@ -12,6 +16,7 @@ const DEV_FIRST_REVEALED = 'Hector';
 const DEV_NAME_GLITCH_MS = 480;
 
 export default function Home() {
+  const { section } = useDevView();
   const { homeViewMode, setHomeViewMode, registerHomeNavToggle } = useSiteMode();
   const [glitching, setGlitching] = useState(false);
   const [devFirstNameGlitch, setDevFirstNameGlitch] = useState(false);
@@ -59,8 +64,6 @@ export default function Home() {
   const glitchedLabel = useGlitchText(c.label, glitching);
   const glitchedSubtitle = useGlitchText(c.subtitle, glitching);
   const glitchedBio = useGlitchText(c.bio, glitching);
-  const glitchedMusicName = useGlitchText(content.music.name, glitching);
-  const glitchedDevFirst = useGlitchText(DEV_FIRST_REVEALED, devFirstNameGlitch);
 
   const firstName = isMusic
     ? c.name.split(' ')[0]
@@ -70,14 +73,20 @@ export default function Home() {
   const lastName = isMusic ? c.name.split(' ').slice(1).join(' ') : NAME_REST.trim();
 
   return (
-    <Hero
-      glitchedLabel={glitchedLabel}
-      glitchedSubtitle={glitchedSubtitle}
-      glitchedBio={glitchedBio}
-      firstName={firstName}
-      lastName={lastName}
-      c={c}
-      isMusic={isMusic}
-    />
+    <PageTransition transitionKey={section}>
+      {section === 'home' && (
+        <Hero
+          glitchedLabel={glitchedLabel}
+          glitchedSubtitle={glitchedSubtitle}
+          glitchedBio={glitchedBio}
+          firstName={firstName}
+          lastName={lastName}
+          c={c}
+          isMusic={isMusic}
+        />
+      )}
+      {section === 'about' && <AboutSection />}
+      {section === 'projects' && <ProjectsSection />}
+    </PageTransition>
   );
 }
