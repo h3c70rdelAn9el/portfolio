@@ -6,6 +6,7 @@ import { projects } from '../../data/projects';
 import { ProjectCard } from '../Card/ProjectCard';
 import { SectionHeader } from '../SectionHeader';
 import { ThumbnailCard } from '../Card/ThumbnailCard';
+import { ProjectsGrid } from './ProjectsGrid';
 
 // ── Main Projects component ───────────────────────────────────
 export function ProjectsSection() {
@@ -23,8 +24,7 @@ export function ProjectsSection() {
         accentColor={ACCENT}
       />
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-4 h-[520px]">
+      <ProjectsGrid>
         {/* Featured — left */}
         <AnimatePresence mode="wait">
           <ProjectCard
@@ -47,7 +47,7 @@ export function ProjectsSection() {
             />
           ))}
         </div>
-      </div>
+      </ProjectsGrid>
     </section>
   );
 }
