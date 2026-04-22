@@ -21,7 +21,7 @@ const content = {
     label: 'Full-Stack Developer',
     subtitle: 'Code is language.',
     bio: 'Full-stack d3veloper. Just making my way through the webverse — one pull request at a time.',
-    pills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
+    pills: ['React', 'Vue', 'Next.js', 'TypeScript', 'Node.js', 'Laravel', 'Tailwind'],
     labelBioColor: '#9eb6e3',
     subtitleColor: '#b8ccef',
     bioColor: '#87a0d4',
@@ -48,7 +48,7 @@ const content = {
     label: 'Guitarist · Instructor',
     subtitle: 'Music is language.',
     bio: "Guitarist from Los Angeles. I teach, I play, I write. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
-    pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
+    pills: ['Lessons', 'Online Sessions', 'Acoustic', 'Electric', 'All Styles'],
     labelBioColor: '#e8c47a',
     subtitleColor: '#f5daa3',
     bioColor: '#d4a85a',
@@ -135,7 +135,9 @@ export default function Home() {
       className="relative min-h-screen overflow-hidden text-[#f2ebe0]"
       style={{ fontFamily: c.bodyFont, transition: 'font-family 0s', backgroundColor: '#07090f' }}>
       {/* Isolate only the crossfading photos so they flatten like one bg layer; vignette stays outside (same order as pre-fade: photo → multiply) */}
-      <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        aria-hidden>
         <div className="absolute inset-0 isolate">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out"
