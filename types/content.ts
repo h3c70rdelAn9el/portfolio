@@ -1,0 +1,53 @@
+// Centralized content object for Hero and related components
+// Edit these values to update hero content for dev and music modes
+
+import type { HeroContent } from '../types/interfaces';
+
+export const content: { dev: HeroContent; music: HeroContent } = {
+  dev: {
+    name: 'h3c70r del Angel',
+    accent: '#a5c8ff',
+    label: 'Full-Stack Developer',
+    subtitle: 'Code is language.',
+    bio: 'Full-stack d3veloper. Just making my way through the webverse — one pull request at a time.',
+    pills: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind'],
+    labelBioColor: '#f4f7fc',
+    subtitleColor: '#ffffff',
+    bioColor: '#f3f7ff',
+    heroLineColor: '#eef2f8',
+    pillColor: 'rgba(79,111,255,0.07)',
+    pillBorder: 'rgba(79,111,255,0.35)',
+    pillText: '#f2f5fa',
+    navLinks: ['About', 'Projects', 'Skills', 'Contact'],
+    orb1: '#2a4fff',
+    orb2: '#7c3aed',
+    orb3: '#1e3a8a',
+    cornerLabel: 'currently building',
+    cornerValue: 'something cool ✦',
+    headingFont: 'var(--font-space), sans-serif',
+    bodyFont: 'var(--font-space), sans-serif',
+  },
+  music: {
+    name: 'Hector del Angel',
+    accent: '#ffe9a7',
+    label: 'Guitarist · Instructor',
+    subtitle: 'Music is language.',
+    bio: "Guitarist from Los Angeles. I teach, I play, I write. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
+    pills: ['Guitar', 'Lessons', 'Original Music', 'Los Angeles', 'Online Sessions'],
+    labelBioColor: '#fff8f0',
+    subtitleColor: '#ffffff',
+    bioColor: '#fffaf2',
+    heroLineColor: '#fff5e8',
+    pillColor: 'rgba(245,158,11,0.07)',
+    pillBorder: 'rgba(245,158,11,0.35)',
+    pillText: '#fff6eb',
+    navLinks: ['Listen', 'Lessons', 'About', 'Contact'],
+    orb1: '#f59e0b',
+    orb2: '#dc2626',
+    orb3: '#92400e',
+    cornerLabel: 'based in',
+    cornerValue: 'Los Angeles, CA ✦',
+    headingFont: 'var(--font-cormorant), serif',
+    bodyFont: 'var(--font-cormorant), serif',
+  },
+};

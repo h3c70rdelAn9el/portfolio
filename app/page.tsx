@@ -13,62 +13,7 @@ const FONT_DEV = 'var(--font-space), sans-serif';
 const FONT_MUSIC = 'var(--font-cormorant), serif';
 
 // ── Content ───────────────────────────────────────────────────
-const content = {
-  dev: {
-    name: 'h3c70r del Angel',
-    accent: '#a5c8ff', // lighter blue for nav, glows, UI
-    heroNameAccent: '#3d9fff', // vivid blue — first name only, pops vs heroLineColor
-    label: 'Full-Stack Developer',
-    subtitle: 'Code is language.',
-    bio: 'Full-stack d3veloper. Just making my way through the webverse — one pull request at a time.',
-    pills: ['React', 'Vue', 'Next.js', 'TypeScript', 'Node.js', 'Laravel', 'Tailwind'],
-    labelBioColor: '#9eb6e3',
-    subtitleColor: '#b8ccef',
-    bioColor: '#87a0d4',
-    heroLineColor: '#d8e4ff',
-    pillColor: 'rgba(79,111,255,0.07)',
-    pillBorder: 'rgba(79,111,255,0.35)',
-    pillText: '#c8d6f0',
-    navBrandColor: '#d5e2ff',
-    navLinkColor: 'rgba(142, 164, 212, 0.9)',
-    navLinkHover: '#edf2ff',
-    navLinks: ['About', 'Projects', 'Skills', 'Contact'],
-    orb1: '#2a4fff',
-    orb2: '#7c3aed',
-    orb3: '#1e3a8a',
-    cornerLabel: 'currently building',
-    cornerValue: 'something cool ✦',
-    headingFont: FONT_DEV,
-    bodyFont: FONT_DEV,
-  },
-  music: {
-    name: 'Hector del Angel',
-    accent: '#ffe9a7', // softer gold for nav, glows, UI
-    heroNameAccent: '#ffb020', // vivid amber-gold — first name only, pops vs heroLineColor
-    label: 'Guitarist · Instructor',
-    subtitle: 'Music is language.',
-    bio: "Guitarist from Los Angeles. I teach, I play, I write. Whether you're picking up a guitar for the first time or leveling up. <br /> Join me, and listen here, we can.",
-    pills: ['Lessons', 'Online Sessions', 'Acoustic', 'Electric', 'All Styles'],
-    labelBioColor: '#e8c47a',
-    subtitleColor: '#f5daa3',
-    bioColor: '#d4a85a',
-    heroLineColor: '#fff0cc',
-    pillColor: 'rgba(245,158,11,0.07)',
-    pillBorder: 'rgba(245,158,11,0.35)',
-    pillText: '#f2dfb0',
-    navBrandColor: '#ffefcf',
-    navLinkColor: 'rgba(212, 176, 102, 0.92)',
-    navLinkHover: '#fff8e6',
-    navLinks: ['Listen', 'Lessons', 'About', 'Contact'],
-    orb1: '#f59e0b',
-    orb2: '#dc2626',
-    orb3: '#92400e',
-    cornerLabel: 'based in',
-    cornerValue: 'Los Angeles, CA ✦',
-    headingFont: FONT_MUSIC,
-    bodyFont: FONT_MUSIC,
-  },
-};
+import { content } from '../types/content';
 
 const NAME_REST = ' del Angel';
 /** Dev hero: glitch-reveal only this part (after delay), not the handle. */
