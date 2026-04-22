@@ -34,6 +34,9 @@ export interface HeroContent {
   headingFont: string;
   bodyFont: string;
   heroNameAccent?: string;
+  navBrandColor: string;
+  navLinkColor: string;
+  navLinkHover: string;
 }
 
 // Add more interfaces/types here as your project grows

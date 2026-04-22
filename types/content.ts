@@ -26,6 +26,9 @@ export const content: { dev: HeroContent; music: HeroContent } = {
     cornerValue: 'something cool ✦',
     headingFont: 'var(--font-space), sans-serif',
     bodyFont: 'var(--font-space), sans-serif',
+    navBrandColor: '#d5e2ff',
+    navLinkColor: 'rgba(142, 164, 212, 0.9)',
+    navLinkHover: '#edf2ff',
   },
   music: {
     name: 'Hector del Angel',
@@ -49,5 +52,8 @@ export const content: { dev: HeroContent; music: HeroContent } = {
     cornerValue: 'Los Angeles, CA ✦',
     headingFont: 'var(--font-cormorant), serif',
     bodyFont: 'var(--font-cormorant), serif',
+    navBrandColor: '#ffefcf',
+    navLinkColor: 'rgba(212, 176, 102, 0.92)',
+    navLinkHover: '#fff8e6',
   },
 };
