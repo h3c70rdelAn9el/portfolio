@@ -12,8 +12,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: '1',
-    title: 'Project One',
-    description: 'A short description of what this project does and the problem it solves.',
+    title: 'FOSH',
+    description:
+      'FOSH is a real-time event discovery platform that helps users find live events and local experiences nearby through an interactive map.',
     tech: ['Laravel', 'Vue.js', 'MySQL'],
     liveUrl: 'https://fosh.live',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-one',
