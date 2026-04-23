@@ -32,7 +32,7 @@ export const projects: Project[] = [
   },
   {
     id: '3',
-    title: 'Project Three',
+    title: 'ToneVault',
     description: 'A short description of what this project does and the problem it solves.',
     image: '/tonevault.png',
     tech: ['TypeScript', 'Prisma', 'PostgreSQL'],
@@ -41,11 +41,21 @@ export const projects: Project[] = [
   },
   {
     id: '4',
-    title: 'Project Four',
+    title: 'site',
     description: 'A short description of what this project does and the problem it solves.',
     image: '/site.png',
     tech: ['React', 'Tailwind', 'Supabase'],
     liveUrl: 'https://yoursite.com',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-four',
+  },
+  {
+    id: '5',
+    title: 'Spicy Gigs',
+    description:
+      'Co-built a full-stack scheduling platform for the adult entertainment industry, connecting producers, directors, talent, and crew to manage city-based bookings, calendars, payments, and subscriber access.',
+    image: '/spicy.png',
+    tech: ['Laravel', 'Vue.js', 'MySQL'],
+    liveUrl: 'https://spicygigs.com',
+    repoUrl: '',
   },
 ];
