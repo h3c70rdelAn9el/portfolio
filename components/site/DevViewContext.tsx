@@ -1,6 +1,14 @@
 'use client';
 
-import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { usePathname } from 'next/navigation';
 
 export type DevSection = 'home' | 'about' | 'projects' | 'contact';
@@ -67,19 +75,19 @@ export function DevViewProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('popstate', onPop);
   }, [syncFromUrl]);
 
-  const go = useCallback((s: DevSection) => {
-    if (s === section) return;
-    setSection(s);
-    const to = pathForSection(s);
-    window.history.pushState({ dev: s }, '', to);
-  }, [section]);
+  const go = useCallback(
+    (s: DevSection) => {
+      if (s === section) return;
+      setSection(s);
+      const to = pathForSection(s);
+      window.history.pushState({ dev: s }, '', to);
+    },
+    [section],
+  );
 
   const isDevHomeHero = !onMusicPath && section === 'home';
 
-  const value = useMemo(
-    () => ({ section, go, isDevHomeHero }),
-    [section, go, isDevHomeHero],
-  );
+  const value = useMemo(() => ({ section, go, isDevHomeHero }), [section, go, isDevHomeHero]);
 
   return <DevViewContext.Provider value={value}>{children}</DevViewContext.Provider>;
 }

@@ -87,25 +87,30 @@ export function Nav({
             }
           }
           // Special client nav for contact
-          if (useClientDevNav && (l.toLowerCase() === 'about' || l.toLowerCase() === 'projects' || l.toLowerCase() === 'contact')) {
+          if (
+            useClientDevNav &&
+            (l.toLowerCase() === 'about' ||
+              l.toLowerCase() === 'projects' ||
+              l.toLowerCase() === 'contact')
+          ) {
             return (
               <a
                 key={l}
                 href={href}
                 className={linkClassName}
                 style={linkStyle}
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   onDevClientNav(l.toLowerCase() as DevSection);
                 }}
-                onMouseEnter={e => setHover(e, linkHoverColor)}
-                onMouseLeave={e => setHover(e, linkColor)}
-              >
+                onMouseEnter={(e) => setHover(e, linkHoverColor)}
+                onMouseLeave={(e) => setHover(e, linkColor)}>
                 {l}
               </a>
             );
           }
-          const isClientRoute = href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
+          const isClientRoute =
+            href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
           if (isClientRoute) {
             return (
               <Link
@@ -113,9 +118,8 @@ export function Nav({
                 href={href}
                 className={linkClassName}
                 style={linkStyle}
-                onMouseEnter={e => setHover(e, linkHoverColor)}
-                onMouseLeave={e => setHover(e, linkColor)}
-              >
+                onMouseEnter={(e) => setHover(e, linkHoverColor)}
+                onMouseLeave={(e) => setHover(e, linkColor)}>
                 {l}
               </Link>
             );
@@ -126,9 +130,8 @@ export function Nav({
               href={href}
               className={linkClassName}
               style={linkStyle}
-              onMouseEnter={e => setHover(e, linkHoverColor)}
-              onMouseLeave={e => setHover(e, linkColor)}
-            >
+              onMouseEnter={(e) => setHover(e, linkHoverColor)}
+              onMouseLeave={(e) => setHover(e, linkColor)}>
               {l}
             </a>
           );
