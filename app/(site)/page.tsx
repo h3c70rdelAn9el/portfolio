@@ -9,6 +9,7 @@ import { useDevView } from '../../components/site/DevViewContext';
 import { PageTransition } from '../../components/PageTransition';
 import { AboutSection } from '../../components/dev/AboutSection';
 import { ProjectsSection } from '../../components/dev/ProjectsSection';
+import { ContactSection } from '@/components/dev/ContactSection';
 
 const NAME_REST = ' del Angel';
 const DEV_FIRST_ALIAS = 'h3c70r';
@@ -87,6 +88,7 @@ export default function Home() {
       )}
       {section === 'about' && <AboutSection />}
       {section === 'projects' && <ProjectsSection />}
+      {section === 'contact' && <ContactSection />}
     </PageTransition>
   );
 }

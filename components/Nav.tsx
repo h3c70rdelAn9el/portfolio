@@ -83,41 +83,39 @@ export function Nav({
             } else if (l.toLowerCase() === 'projects') {
               href = '/dev/projects';
             } else if (l.toLowerCase() === 'contact') {
-              href = '/dev/contact';
+              href = '#contact';
             }
           }
-          const isClientRoute =
-            href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
+          // Special client nav for contact
+          if (useClientDevNav && (l.toLowerCase() === 'about' || l.toLowerCase() === 'projects' || l.toLowerCase() === 'contact')) {
+            return (
+              <a
+                key={l}
+                href={href}
+                className={linkClassName}
+                style={linkStyle}
+                onClick={e => {
+                  e.preventDefault();
+                  onDevClientNav(l.toLowerCase() as DevSection);
+                }}
+                onMouseEnter={e => setHover(e, linkHoverColor)}
+                onMouseLeave={e => setHover(e, linkColor)}
+              >
+                {l}
+              </a>
+            );
+          }
+          const isClientRoute = href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
           if (isClientRoute) {
-            if (
-              useClientDevNav &&
-              (l.toLowerCase() === 'about' || l.toLowerCase() === 'projects')
-            ) {
-              return (
-                <Link
-                  key={l}
-                  href={href}
-                  scroll={false}
-                  className={linkClassName}
-                  style={linkStyle}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onDevClientNav(l.toLowerCase() === 'about' ? 'about' : 'projects');
-                  }}
-                  onMouseEnter={(e) => setHover(e, linkHoverColor)}
-                  onMouseLeave={(e) => setHover(e, linkColor)}>
-                  {l}
-                </Link>
-              );
-            }
             return (
               <Link
                 key={l}
                 href={href}
                 className={linkClassName}
                 style={linkStyle}
-                onMouseEnter={(e) => setHover(e, linkHoverColor)}
-                onMouseLeave={(e) => setHover(e, linkColor)}>
+                onMouseEnter={e => setHover(e, linkHoverColor)}
+                onMouseLeave={e => setHover(e, linkColor)}
+              >
                 {l}
               </Link>
             );
@@ -128,12 +126,9 @@ export function Nav({
               href={href}
               className={linkClassName}
               style={linkStyle}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = linkHoverColor;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = linkColor;
-              }}>
+              onMouseEnter={e => setHover(e, linkHoverColor)}
+              onMouseLeave={e => setHover(e, linkColor)}
+            >
               {l}
             </a>
           );

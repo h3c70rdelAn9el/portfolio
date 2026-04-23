@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-export type DevSection = 'home' | 'about' | 'projects';
+export type DevSection = 'home' | 'about' | 'projects' | 'contact';
 
 type DevViewContextValue = {
   section: DevSection;
@@ -15,12 +15,19 @@ type DevViewContextValue = {
 
 const DevViewContext = createContext<DevViewContextValue | null>(null);
 
-const pathForSection = (s: DevSection) => (s === 'home' ? '/' : s === 'about' ? '/dev/about' : '/dev/projects');
+const pathForSection = (s: DevSection) => {
+  if (s === 'home') return '/';
+  if (s === 'about') return '/dev/about';
+  if (s === 'projects') return '/dev/projects';
+  if (s === 'contact') return '#contact'; // Not a route, but for consistency
+  return '/';
+};
 
 function readSectionFromPath(path: string, onMusicPath: boolean): DevSection {
   if (onMusicPath) return 'home';
   if (path === '/dev/about' || path.startsWith('/dev/about/')) return 'about';
   if (path === '/dev/projects' || path.startsWith('/dev/projects/')) return 'projects';
+  if (typeof window !== 'undefined' && window.location.hash === '#contact') return 'contact';
   return 'home';
 }
 
