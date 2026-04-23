@@ -1,5 +1,6 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDevView } from '../../components/site/DevViewContext';
 import { LayoutGroup } from 'framer-motion';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../Card/ProjectCard';
@@ -10,7 +11,15 @@ import { ProjectsGrid } from './ProjectsGrid';
 const ACCENT = '#4f6fff';
 
 export function ProjectsSection() {
+  const { section } = useDevView();
   const [activeId, setActiveId] = useState(projects[0].id);
+
+  // Reset to first card whenever section changes to 'projects'
+  useEffect(() => {
+    if (section === 'projects') {
+      setActiveId(projects[0].id);
+    }
+  }, [section]);
 
   return (
     <section
@@ -40,15 +49,17 @@ export function ProjectsSection() {
 
           {/* Thumbnails — right */}
           <div className="flex flex-col gap-3 overflow-y-auto pr-1 pl-4">
-            {projects.map((p) => (
-              <ThumbnailCard
-                key={p.id}
-                project={p}
-                isActive={p.id === activeId}
-                onClick={() => setActiveId(p.id)}
-                accentColor={ACCENT}
-              />
-            ))}
+            {projects
+              .filter((p) => p.id !== activeId)
+              .map((p) => (
+                <ThumbnailCard
+                  key={p.id}
+                  project={p}
+                  isActive={false}
+                  onClick={() => setActiveId(p.id)}
+                  accentColor={ACCENT}
+                />
+              ))}
           </div>
         </ProjectsGrid>
       </LayoutGroup>
