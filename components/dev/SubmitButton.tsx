@@ -31,8 +31,7 @@ export function SubmitButton({ status, onClick }: SubmitButtonProps) {
       animate={{ backgroundColor: colors[status] }}
       transition={{ duration: 0.3 }}
       style={{ fontFamily: FONT_DEV }}
-      className="relative w-full py-3 rounded-xl text-sm font-semibold text-white tracking-wider overflow-hidden disabled:cursor-not-allowed"
-    >
+      className="relative w-full py-3 rounded-xl text-sm font-semibold text-white tracking-wider overflow-hidden disabled:cursor-not-allowed">
       <AnimatePresence mode="wait">
         <motion.span
           key={status}
@@ -40,8 +39,7 @@ export function SubmitButton({ status, onClick }: SubmitButtonProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.15 }}
-          className="block"
-        >
+          className="block">
           {labels[status]}
         </motion.span>
       </AnimatePresence>

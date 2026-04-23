@@ -23,10 +23,12 @@ function validate(values: FormValues): FormErrors {
   if (!values.name.trim()) errors.name = 'Name is required';
   if (!values.email.trim()) errors.email = 'Email is required';
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) errors.email = 'Invalid email address';
-  if (values.phone && !/^\+?[\d\s\-()]{7,15}$/.test(values.phone)) errors.phone = 'Invalid phone number';
+  if (values.phone && !/^\+?[\d\s\-()]{7,15}$/.test(values.phone))
+    errors.phone = 'Invalid phone number';
   if (!values.subject.trim()) errors.subject = 'Subject is required';
   if (!values.message.trim()) errors.message = 'Message is required';
-  else if (values.message.trim().length < 10) errors.message = 'Message must be at least 10 characters';
+  else if (values.message.trim().length < 10)
+    errors.message = 'Message must be at least 10 characters';
   return errors;
 }
 
@@ -50,7 +52,7 @@ export function useContactForm() {
 
   async function handleSubmit() {
     const allTouched = Object.fromEntries(
-      (Object.keys(empty) as (keyof FormValues)[]).map((k) => [k, true])
+      (Object.keys(empty) as (keyof FormValues)[]).map((k) => [k, true]),
     );
     setTouched(allTouched);
     const errs = validate(values);
@@ -71,7 +73,7 @@ export function useContactForm() {
           message: values.message,
           to_email: 'hectordelangel@gmail.com',
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
       );
       setStatus('success');
       setValues(empty);

@@ -74,8 +74,7 @@ export function Nav({
           {brand}
         </Link>
       )}
-      <div
-        className="mx-1 flex min-w-0 max-w-[min(100%,58vw)] flex-1 items-center justify-center gap-1.5 overflow-x-auto whitespace-nowrap sm:max-w-none sm:gap-3 md:mx-0 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mx-1 flex min-w-0 max-w-[min(100%,58vw)] flex-1 items-center justify-center gap-1.5 overflow-x-auto whitespace-nowrap sm:max-w-none sm:gap-3 md:mx-0 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {navLinks.map((l) => {
           let href = `#${l.toLowerCase()}`;
           if (!isMusic) {
@@ -83,11 +82,17 @@ export function Nav({
               href = '/dev/about';
             } else if (l.toLowerCase() === 'projects') {
               href = '/dev/projects';
+            } else if (l.toLowerCase() === 'contact') {
+              href = '/dev/contact';
             }
           }
-          const isClientRoute = href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
+          const isClientRoute =
+            href.startsWith('/dev/') || href === '/music' || href.startsWith('/music/');
           if (isClientRoute) {
-            if (useClientDevNav && (l.toLowerCase() === 'about' || l.toLowerCase() === 'projects')) {
+            if (
+              useClientDevNav &&
+              (l.toLowerCase() === 'about' || l.toLowerCase() === 'projects')
+            ) {
               return (
                 <Link
                   key={l}
