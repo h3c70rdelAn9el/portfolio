@@ -1,18 +1,16 @@
 'use client';
-
 import { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { LayoutGroup } from 'framer-motion';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../Card/ProjectCard';
 import { SectionHeader } from '../SectionHeader';
 import { ThumbnailCard } from '../Card/ThumbnailCard';
 import { ProjectsGrid } from './ProjectsGrid';
 
-// ── Main Projects component ───────────────────────────────────
+const ACCENT = '#4f6fff';
+
 export function ProjectsSection() {
   const [activeId, setActiveId] = useState(projects[0].id);
-  const activeProject = projects.find((p) => p.id === activeId)!;
-  const ACCENT = '#4f6fff';
 
   return (
     <section
@@ -23,31 +21,37 @@ export function ProjectsSection() {
         subtitle="Selected work"
         accentColor={ACCENT}
       />
+      <LayoutGroup>
+        <ProjectsGrid>
+          {/* Featured — left */}
+          <div className="relative w-full h-full">
+            {projects.map(
+              (p) =>
+                p.id === activeId && (
+                  <ProjectCard
+                    key={p.id}
+                    project={p}
+                    imagePriority={p.id === projects[0].id}
+                    accentColor={ACCENT}
+                  />
+                ),
+            )}
+          </div>
 
-      <ProjectsGrid>
-        {/* Featured — left */}
-        <AnimatePresence mode="wait">
-          <ProjectCard
-            key={activeId}
-            project={activeProject}
-            imagePriority={activeId === projects[0].id}
-            accentColor={ACCENT}
-          />
-        </AnimatePresence>
-
-        {/* Thumbnails — right */}
-        <div className="flex flex-col gap-3 overflow-y-auto pr-1 pl-4">
-          {projects.map((p) => (
-            <ThumbnailCard
-              key={p.id}
-              project={p}
-              isActive={p.id === activeId}
-              onClick={() => setActiveId(p.id)}
-              accentColor={ACCENT}
-            />
-          ))}
-        </div>
-      </ProjectsGrid>
+          {/* Thumbnails — right */}
+          <div className="flex flex-col gap-3 overflow-y-auto pr-1 pl-4">
+            {projects.map((p) => (
+              <ThumbnailCard
+                key={p.id}
+                project={p}
+                isActive={p.id === activeId}
+                onClick={() => setActiveId(p.id)}
+                accentColor={ACCENT}
+              />
+            ))}
+          </div>
+        </ProjectsGrid>
+      </LayoutGroup>
     </section>
   );
 }
