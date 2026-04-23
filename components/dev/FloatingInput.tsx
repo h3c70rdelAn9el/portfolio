@@ -55,7 +55,7 @@ export function FloatingInput({
         <motion.p
           initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-1 text-[11px] text-[#ff4f4f] pl-1"
+          className="absolute left-1 top-full mt-1 text-[11px] text-[#ff4f4f] pl-1"
           style={{ fontFamily: FONT_DEV }}>
           {error}
         </motion.p>
