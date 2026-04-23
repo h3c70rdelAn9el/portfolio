@@ -47,8 +47,8 @@ export function FloatingInput({
         htmlFor={id}
         style={{ fontFamily: FONT_DEV }}
         className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-white/40 transition-all duration-200 pointer-events-none
-          peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[10px] peer-focus:text-[#4f6fff]
-          peer-[&:not(:placeholder-shown)]:top-3 peer-[&:not(:placeholder-shown)]:translate-y-0 peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:text-white/50">
+          peer-focus:top-0 peer-focus:translate-y-[-90%] peer-focus:text-[10px] peer-focus:text-[#4f6fff]
+          peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:translate-y-[-90%] peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:text-white/50">
         {label}
       </label>
       {hasError && (
