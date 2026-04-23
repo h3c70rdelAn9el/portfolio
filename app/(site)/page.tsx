@@ -87,7 +87,7 @@ export default function Home() {
         />
       )}
       {section === 'about' && <AboutSection />}
-      {section === 'projects' && <ProjectsSection />}
+      {section === 'projects' && <ProjectsSection key={section} />}
       {section === 'contact' && <ContactSection />}
     </PageTransition>
   );

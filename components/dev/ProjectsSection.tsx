@@ -11,15 +11,8 @@ import { ProjectsGrid } from './ProjectsGrid';
 const ACCENT = '#4f6fff';
 
 export function ProjectsSection() {
-  const { section } = useDevView();
+  // No need to sync with section, just use initial state
   const [activeId, setActiveId] = useState(projects[0].id);
-
-  // Reset to first card whenever section changes to 'projects'
-  useEffect(() => {
-    if (section === 'projects') {
-      setActiveId(projects[0].id);
-    }
-  }, [section]);
 
   return (
     <section
