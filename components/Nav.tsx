@@ -86,7 +86,7 @@ export function Nav({
             } else if (low === 'lessons') {
               href = '/music/lessons';
             } else if (low === 'listen') {
-              href = '/music';
+              href = '/music/listen';
             } else if (low === 'contact') {
               href = '/music/contact';
             }

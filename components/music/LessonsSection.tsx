@@ -21,7 +21,7 @@ const offerings = [
   },
   {
     title: 'In-Person & Online',
-    desc: 'Based in Los Angeles. Remote lessons available via Zoom or FaceTime. Flexible scheduling.',
+    desc: 'Based in Glendale,CA. Remote lessons available via Zoom or FaceTime. Flexible scheduling.',
   },
 ];
 
