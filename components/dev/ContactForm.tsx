@@ -1,20 +1,27 @@
 'use client';
+import type { CSSProperties } from 'react';
 import { useContactForm } from '../../hooks/useContactForm';
 import { FloatingInput } from './FloatingInput';
 import { FloatingTextarea } from './FloatingTextarea';
 import { SubmitButton } from './SubmitButton';
 import { FONT_DEV } from '../constants';
 
-const ACCENT = '#4f6fff';
+const DEFAULT_ACCENT = '#4f6fff';
 
-export function ContactForm() {
+export function ContactForm({ accent = DEFAULT_ACCENT }: { accent?: string }) {
   const { values, errors, touched, status, handleChange, handleBlur, handleSubmit, setStatus } =
     useContactForm();
 
   return (
     <div
       className="w-full max-w-xl mx-auto rounded-2xl border-2 bg-white/5 backdrop-blur-xl p-8 shadow-xl shadow-blue-900/20"
-      style={{ fontFamily: FONT_DEV, borderColor: ACCENT }}>
+      style={
+        {
+          fontFamily: FONT_DEV,
+          borderColor: accent,
+          ['--contact-accent' as string]: accent,
+        } as CSSProperties
+      }>
       <div className="flex flex-col gap-4">
         {/* Row: Name + Phone */}
         <div className="flex gap-4">
@@ -72,6 +79,7 @@ export function ContactForm() {
 
         <SubmitButton
           status={status}
+          accent={accent}
           onClick={handleSubmit}
         />
 

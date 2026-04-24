@@ -98,7 +98,7 @@ export default function Home() {
         </>
       )}
       {section === 'projects' && <ProjectsSection key={section} />}
-      {section === 'contact' && <ContactSection />}
+      {section === 'contact' && <ContactSection accent={c.accent} />}
     </PageTransition>
   );
 }

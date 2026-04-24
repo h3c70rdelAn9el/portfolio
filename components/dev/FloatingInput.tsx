@@ -13,8 +13,6 @@ interface FloatingInputProps {
   onBlur: () => void;
 }
 
-const ACCENT = '#4f6fff';
-
 export function FloatingInput({
   id,
   label,
@@ -39,15 +37,19 @@ export function FloatingInput({
         placeholder=" "
         style={{
           fontFamily: FONT_DEV,
-          borderColor: hasError ? '#ff4f4f' : isFilled ? ACCENT : 'rgba(255,255,255,0.12)',
+          borderColor: hasError
+            ? '#ff4f4f'
+            : isFilled
+              ? 'var(--contact-accent, #4f6fff)'
+              : 'rgba(255,255,255,0.12)',
         }}
-        className="peer w-full rounded-xl border bg-white/5 px-4 pt-5 pb-2 text-sm text-white outline-none transition-all duration-200 placeholder-transparent focus:border-[#4f6fff] focus:ring-1 focus:ring-[#4f6fff]"
+        className="peer w-full rounded-xl border bg-white/5 px-4 pt-5 pb-2 text-sm text-white outline-none transition-all duration-200 placeholder-transparent focus:border-[var(--contact-accent,#4f6fff)] focus:ring-1 focus:ring-[var(--contact-accent,#4f6fff)]"
       />
       <label
         htmlFor={id}
         style={{ fontFamily: FONT_DEV }}
         className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-white/40 transition-all duration-200 pointer-events-none
-          peer-focus:top-0 peer-focus:translate-y-[-90%] peer-focus:text-[10px] peer-focus:text-[#4f6fff]
+          peer-focus:top-0 peer-focus:translate-y-[-90%] peer-focus:text-[10px] peer-focus:text-[var(--contact-accent,#4f6fff)]
           peer-[&:not(:placeholder-shown)]:top-0 peer-[&:not(:placeholder-shown)]:translate-y-[-90%] peer-[&:not(:placeholder-shown)]:text-[10px] peer-[&:not(:placeholder-shown)]:text-white/50">
         {label}
       </label>

@@ -1,9 +1,9 @@
 import { SectionHeader } from '../SectionHeader';
 import { ContactForm } from './ContactForm';
 
-const ACCENT = '#4f6fff';
+const DEFAULT_ACCENT = '#4f6fff';
 
-export function ContactSection() {
+export function ContactSection({ accent = DEFAULT_ACCENT }: { accent?: string }) {
   return (
     <section
       id="contact"
@@ -11,9 +11,9 @@ export function ContactSection() {
       <SectionHeader
         title="Contact"
         subtitle="Get in touch"
-        accentColor={ACCENT}
+        accentColor={accent}
       />
-      <ContactForm />
+      <ContactForm accent={accent} />
     </section>
   );
 }
