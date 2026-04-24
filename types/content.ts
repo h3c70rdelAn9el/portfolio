@@ -18,7 +18,7 @@ export const content: { dev: HeroContent; music: HeroContent } = {
     pillColor: 'rgba(79,111,255,0.07)',
     pillBorder: 'rgba(79,111,255,0.35)',
     pillText: '#f2f5fa',
-    navLinks: ['About', 'Skills', 'Projects', 'Contact'],
+    navLinks: ['About', 'Projects', 'Contact'],
     orb1: '#2a4fff',
     orb2: '#7c3aed',
     orb3: '#1e3a8a',
