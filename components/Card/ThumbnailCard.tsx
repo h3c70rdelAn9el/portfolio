@@ -8,16 +8,19 @@ export function ThumbnailCard({
   isActive,
   onClick,
   accentColor = ACCENT,
+  sharedLayout = true,
 }: {
   project: Project;
   isActive: boolean;
   onClick: () => void;
   accentColor?: string;
+  sharedLayout?: boolean;
 }) {
   return (
     <motion.div
-      layoutId={`card-${project.id}`}
-      layout
+      {...(sharedLayout
+        ? { layoutId: `card-${project.id}`, layout: true as const }
+        : { layout: false })}
       onClick={onClick}
       className="relative w-full rounded-xl border-2 overflow-hidden text-left cursor-pointer"
       style={{
