@@ -23,7 +23,7 @@ const PROFILE_SRC = '/guitar.jpg';
 export function AboutSection() {
   return (
     <section id="about" className="relative z-10 pt-10">
-      <SectionHeader title="About" subtitle="Who I am" accentColor={music.accent} />
+      <SectionHeader title="About" subtitle="Who I am" accentColor={music.accent} size="lg" />
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
         <div className="shrink-0 flex justify-center md:justify-start md:pt-1">
           <div
@@ -45,20 +45,20 @@ export function AboutSection() {
           </div>
         </div>
         <div className="flex-1 min-w-0 max-w-2xl mx-auto md:mx-0">
-          <p className="mb-6 text-base leading-relaxed text-[#e8d4c4]">
+          <p className="mb-6 text-lg leading-relaxed text-[#e8d4c4] md:text-xl md:leading-8">
             I&rsquo;m <span className="font-semibold text-[#fff5e6]">H3c70r del Angel</span>, a
             guitarist, creator, and teacher with 30+ years of experience playing and teaching music. I
             move between technical metal, progressive textures, and all styles in between, always
             focusing on feel as much as complexity—chasing riffs and ideas that actually move people.
           </p>
 
-          <p className="mb-4 text-[#e8d4c4] leading-relaxed">
+          <p className="mb-4 text-lg leading-relaxed text-[#e8d4c4] md:text-xl md:leading-8">
             <span className="font-semibold text-[#fff8f0]">Philosophy:</span> Teaching across
             styles—breaking things down so theory, technique, and real musical expression connect.
             Whether I&rsquo;m building sounds, writing parts, or helping others level up, I&rsquo;m
             always learning, refining, and exploring.
           </p>
-          <p className="mt-8 text-base leading-relaxed" style={{ color: music.accent }}>
+          <p className="mt-8 text-lg leading-relaxed md:text-xl md:leading-8" style={{ color: music.accent }}>
             For me, music is discovery—turning ideas into motion and noise into something honest.
           </p>
         </div>
