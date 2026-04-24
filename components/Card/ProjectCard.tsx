@@ -8,15 +8,19 @@ export function ProjectCard({
   project,
   imagePriority,
   accentColor = ACCENT,
+  sharedLayout = true,
 }: {
   project: Project;
   imagePriority?: boolean;
   accentColor?: string;
+  /** Shared layoutId morph (desktop). Off on small screens to avoid broken FLIP / clipping. */
+  sharedLayout?: boolean;
 }) {
   return (
     <motion.div
-      layoutId={`card-${project.id}`}
-      layout
+      {...(sharedLayout
+        ? { layoutId: `card-${project.id}`, layout: true as const }
+        : { layout: false })}
       className="absolute inset-0 flex flex-col rounded-2xl border bg-white/5 backdrop-blur-xl overflow-hidden shadow-xl shadow-blue-900"
       style={{ fontFamily: FONT_DEV, borderColor: accentColor, zIndex: 2 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}>
