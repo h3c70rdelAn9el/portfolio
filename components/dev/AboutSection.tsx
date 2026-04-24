@@ -8,19 +8,12 @@ const PROFILE_SRC = '/dev-profile.png';
 
 export function AboutSection() {
   return (
-    <section
-      id="about"
-      className="relative z-10 pt-10">
-      <SectionHeader
-        title="About"
-        subtitle="Who I am"
-        accentColor={ACCENT}
-      />
+    <section id="about" className="relative z-10 pt-10">
+      <SectionHeader title="About" subtitle="Who I am" accentColor={ACCENT} />
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
         <div className="shrink-0 flex justify-center md:justify-start md:pt-1">
           <div className="mx-auto w-full max-w-[240px] rounded-2xl shadow-[0_0_40px_rgba(79,111,255,0.15),0_0_64px_rgba(79,111,255,0.08)] md:mx-0">
-            <div
-              className="group relative h-[300px] sm:h-[320px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/3">
+            <div className="group relative h-[300px] sm:h-[320px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/3">
               <Image
                 src={PROFILE_SRC}
                 alt="Hector del Angel"
@@ -41,17 +34,14 @@ export function AboutSection() {
             experiences from polished frontends to scalable backend systems. My journey is rooted in
             learning, shipping, and constantly improving through real-world projects.
           </p>
-          <p className="mb-4 text-[#c8d4ed]">
-            <span className="font-semibold text-[#e8eefc]">Stack:</span> React, Next.js, Laravel,
-            TypeScript, Node.js, Tailwind CSS
-          </p>
+
           <p className="mb-4 text-[#c8d4ed]">
             <span className="font-semibold text-[#e8eefc]">Philosophy:</span> Code is language. I
             believe in writing clear, maintainable code that solves real problems and creates smooth
             user experiences.
           </p>
           <p className="mt-8 text-[#a5c8ff] ">
-            Always learning, always building, always pushing forward.
+            Somewhere between the first commit and the next riff.
           </p>
         </div>
       </div>
