@@ -46,19 +46,20 @@ export function AboutSection() {
         </div>
         <div className="flex-1 min-w-0 max-w-2xl mx-auto md:mx-0">
           <p className="mb-6 text-base leading-relaxed text-[#e8d4c4]">
-            Welcome. I’m <span className="font-semibold text-[#fff5e6]">Hector del Angel</span> — a
-            guitarist and teacher based in Los Angeles, sharing what I know through lessons and
-            through performance. My path is built on practice, passion, and the belief that any player
-            can find their own voice.
+            I&rsquo;m <span className="font-semibold text-[#fff5e6]">H3c70r del Angel</span>, a
+            guitarist, creator, and teacher with 30+ years of experience playing and teaching music. I
+            move between technical metal, progressive textures, and all styles in between, always
+            focusing on feel as much as complexity—chasing riffs and ideas that actually move people.
           </p>
 
-          <p className="mb-4 text-[#e8d4c4]">
-            <span className="font-semibold text-[#fff8f0]">Philosophy:</span> Music is language. I
-            help students and listeners connect with the instrument and the feel behind the notes —
-            technique in service of expression.
+          <p className="mb-4 text-[#e8d4c4] leading-relaxed">
+            <span className="font-semibold text-[#fff8f0]">Philosophy:</span> Teaching across
+            styles—breaking things down so theory, technique, and real musical expression connect.
+            Whether I&rsquo;m building sounds, writing parts, or helping others level up, I&rsquo;m
+            always learning, refining, and exploring.
           </p>
-          <p className="mt-8" style={{ color: music.accent }}>
-            Somewhere between the first open chord and the next phrase that feels like home.
+          <p className="mt-8 text-base leading-relaxed" style={{ color: music.accent }}>
+            For me, music is discovery—turning ideas into motion and noise into something honest.
           </p>
         </div>
       </div>
