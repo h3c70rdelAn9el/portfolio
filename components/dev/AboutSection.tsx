@@ -18,19 +18,20 @@ export function AboutSection() {
       />
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
         <div className="shrink-0 flex justify-center md:justify-start md:pt-1">
-          <div
-            className="relative mx-auto w-full max-w-[240px] h-[300px] sm:h-[320px] rounded-2xl overflow-hidden border border-white/10 bg-white/3 ring-1 ring-white/6 md:mx-0"
-            style={{ boxShadow: `0 0 48px -12px ${ACCENT}73, 0 25px 50px -25px rgba(0,0,0,0.55)` }}>
-            <Image
-              src={PROFILE_SRC}
-              alt="Hector del Angel"
-              width={1021}
-              height={929}
-              unoptimized
-              className="h-full w-full object-cover object-center"
-              sizes="(max-width: 768px) 240px, 280px"
-              priority
-            />
+          <div className="mx-auto w-full max-w-[240px] rounded-2xl shadow-[0_0_40px_rgba(79,111,255,0.15),0_0_64px_rgba(79,111,255,0.08)] md:mx-0">
+            <div
+              className="group relative h-[300px] sm:h-[320px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/3">
+              <Image
+                src={PROFILE_SRC}
+                alt="Hector del Angel"
+                width={1021}
+                height={929}
+                unoptimized
+                className="h-full w-full object-cover object-center grayscale transition-[filter] duration-300 ease-out group-hover:grayscale-0"
+                sizes="(max-width: 768px) 240px, 280px"
+                priority
+              />
+            </div>
           </div>
         </div>
         <div className="flex-1 min-w-0 max-w-2xl mx-auto md:mx-0">
