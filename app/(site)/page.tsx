@@ -11,6 +11,7 @@ import { PageTransition } from '../../components/PageTransition';
 import { AboutSection } from '../../components/dev/AboutSection';
 import { ProjectsSection } from '../../components/dev/ProjectsSection';
 import { SkillsSection } from '../../components/dev/SkillsSection';
+// import { SkillsPills } from '../../components/dev/SkillsPills';
 import { ContactSection } from '@/components/dev/ContactSection';
 
 const NAME_REST = ' del Angel';
@@ -92,6 +93,7 @@ export default function Home() {
         <>
           <AboutSection />
           <SkillsSection />
+          {/* <SkillsPills /> */}
         </>
       )}
       {section === 'projects' && <ProjectsSection key={section} />}
