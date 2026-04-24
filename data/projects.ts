@@ -14,7 +14,7 @@ export const projects: Project[] = [
     id: '1',
     title: 'FOSH',
     description:
-      'Co-built FOSH, a real-time event discovery platform focused on Philadelphia, helping users find live events and local experiences through an interactive map. The platform features a dynamic map interface and personalized recommendations, making it easy to explore what’s happening around the city.',
+      'Co-built at 0x7a69 - FOSH, a real-time event discovery platform focused on Philadelphia, helping users find live events and local experiences through an interactive map. The platform features a dynamic map interface and personalized recommendations, making it easy to explore what’s happening around the city.',
     image: '/fosh_map.png',
     liveUrl: 'https://fosh.live',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-one',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     id: '5',
     title: 'Spicy Gigs',
     description:
-      'Co-built a full-stack scheduling platform for the adult entertainment industry, connecting producers, directors, talent, and crew to manage city-based bookings, calendars, payments, and subscriber access.',
+      'Co-built at 0x7a69 -  a full-stack scheduling platform for the adult entertainment industry, connecting producers, directors, talent, and crew to manage city-based bookings, calendars, payments, and subscriber access.',
     image: '/spicy.png',
     tech: ['Laravel', 'Vue.js', 'MySQL'],
     liveUrl: 'https://spicygigs.com',
