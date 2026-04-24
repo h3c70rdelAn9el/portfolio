@@ -1,12 +1,21 @@
 import Image from 'next/image';
 import { content } from '../../types/content';
 import { SectionHeader } from '../SectionHeader';
+import { SkillsSection } from './SkillsSection';
 
 const music = content.music;
 
 function hexToRgbTuple(hex: string): [number, number, number] {
   const h = hex.replace('#', '');
-  const n = parseInt(h.length === 3 ? h.split('').map((c) => c + c).join('') : h, 16);
+  const n = parseInt(
+    h.length === 3
+      ? h
+          .split('')
+          .map((c) => c + c)
+          .join('')
+      : h,
+    16,
+  );
   return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
 
@@ -20,27 +29,31 @@ const imageGlow = (() => {
 /** `public/guitar_selfie.jpg` — landscape; framed 3:2 to match asset. */
 const PROFILE_SRC = '/guitar_selfie.jpg';
 
+/** Shared body size for all About paragraphs (`text-base` ≈ medium body). */
+const musicAboutCopy = 'text-base leading-relaxed md:leading-7';
+
 export function AboutSection() {
   return (
+    <>
     <section id="about" className="relative z-10 pt-10">
       <SectionHeader title="About" subtitle="Who I am" accentColor={music.accent} size="lg" />
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
         <div className="flex-1 min-w-0 max-w-2xl mx-auto md:mx-0 order-2 md:order-1">
-          <p className="mb-6 text-lg leading-relaxed text-[#e8d4c4] md:text-xl md:leading-8">
-            I&rsquo;m <span className="font-semibold text-[#fff5e6]">H3c70r del Angel</span>, a
-            guitarist, creator, and teacher with 30+ years of experience playing and teaching music. I
-            move between technical metal, progressive textures, and all styles in between, always
-            focusing on feel as much as complexity—chasing riffs and ideas that actually move people.
+          <p className={`${musicAboutCopy} mb-6 text-[#e8d4c4]`}>
+            I&rsquo;m <span className="font-semibold text-[#fff5e6]">Hector del Angel</span> — a
+            guitarist, creator, and teacher with 30+ years across styles, from technical metal to
+            progressive textures and beyond. I value feel as much as complexity, always chasing
+            riffs and ideas that connect.
           </p>
 
-          <p className="mb-4 text-lg leading-relaxed text-[#e8d4c4] md:text-xl md:leading-8">
-            <span className="font-semibold text-[#fff8f0]">Philosophy:</span> Teaching across
-            styles—breaking things down so theory, technique, and real musical expression connect.
-            Whether I&rsquo;m building sounds, writing parts, or helping others level up, I&rsquo;m
-            always learning, refining, and exploring.
+          <p className={`${musicAboutCopy} mb-4 text-[#e8d4c4]`}>
+            <span className="font-semibold text-[#fff8f0]">Philosophy:</span> Teaching and playing
+            are the same process—connecting theory, technique, and expression into one language.
+            Whether building sounds, writing parts, or helping others level up, I&rsquo;m always
+            learning, refining, and exploring.
           </p>
-          <p className="mt-8 text-lg leading-relaxed md:text-xl md:leading-8" style={{ color: music.accent }}>
-            For me, music is discovery—turning ideas into motion and noise into something honest.
+          <p className={`${musicAboutCopy} mt-8`} style={{ color: music.accent }}>
+            Somewhere between the first note and the next riff…
           </p>
         </div>
         <div className="shrink-0 flex justify-center md:justify-end md:pt-1 order-1 md:order-2 w-full md:w-auto">
@@ -61,5 +74,7 @@ export function AboutSection() {
         </div>
       </div>
     </section>
+    <SkillsSection />
+    </>
   );
 }
