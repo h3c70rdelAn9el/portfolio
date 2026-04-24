@@ -25,7 +25,7 @@ export function SkillsSection() {
     <section id="skills" className="relative z-10 mt-10">
       <SectionHeader title="Styles" subtitle="What I play" accentColor={music.accent} />
 
-      <div className="relative mt-8">
+      <div className="relative -mt-6 mb">
         <button
           aria-label="Scroll left"
           onClick={() => scroll('left')}
