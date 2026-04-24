@@ -55,7 +55,7 @@ export function SkillsSection() {
           {skills.map((s) => (
             <span
               key={s.name}
-              className="shrink-0 rounded-full px-4 py-1.5 text-[11px] tracking-wider border cursor-default"
+              className="shrink-0 rounded-full px-4 py-2 text-xs tracking-wider border cursor-default"
               style={{
                 scrollSnapAlign: 'center',
                 background: music.pillColor,
