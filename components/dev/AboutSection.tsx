@@ -6,7 +6,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative z-10 px-8 md:px-16 pt-24">
+      className="relative z-10 px-8 md:px-16  pt-10">
       <SectionHeader
         title="About"
         subtitle="Who I am"

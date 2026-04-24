@@ -17,7 +17,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative z-10 px-8 md:px-16 py-24">
+      className="relative z-10 px-8 md:px-16 pt-10">
       <SectionHeader
         title="Projects"
         subtitle="Selected work"
