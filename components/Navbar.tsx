@@ -3,7 +3,7 @@
 import { useMode } from '@/components/ModeContext';
 
 const navLinks = {
-  dev: ['About', 'Projects', 'Contact'],
+  dev: ['About', 'Skills', 'Projects', 'Contact'],
   music: ['Listen', 'Lessons', 'About', 'Contact'],
 };
 
@@ -17,8 +17,7 @@ export default function Navbar() {
       {/* Logo */}
       <span
         className="text-lg font-extrabold tracking-tight text-white"
-        style={{ fontFamily: 'var(--font-syne), sans-serif' }}
-      >
+        style={{ fontFamily: 'var(--font-syne), sans-serif' }}>
         hda<span style={{ color: accent, transition: 'color 0.5s' }}>.</span>
       </span>
 
@@ -28,8 +27,7 @@ export default function Navbar() {
           <a
             key={l}
             href={`#${l.toLowerCase()}`}
-            className="text-xs tracking-widest text-white/35 hover:text-white/80 transition-colors uppercase"
-          >
+            className="text-xs tracking-widest text-white/35 hover:text-white/80 transition-colors uppercase">
             {l}
           </a>
         ))}
@@ -38,8 +36,7 @@ export default function Navbar() {
       {/* Toggle */}
       <button
         onClick={toggleMode}
-        className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/50 backdrop-blur-md hover:text-white/80 hover:border-white/20 transition-all duration-300 cursor-pointer"
-      >
+        className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/50 backdrop-blur-md hover:text-white/80 hover:border-white/20 transition-all duration-300 cursor-pointer">
         <span>{isMusic ? '💻' : '🎸'}</span>
         <span className="tracking-widest uppercase">{isMusic ? 'Dev' : 'Music'}</span>
       </button>

@@ -7,8 +7,10 @@ import { content } from '../../types/content';
 import { useSiteMode } from '../../components/site/SiteModeContext';
 import { useDevView } from '../../components/site/DevViewContext';
 import { PageTransition } from '../../components/PageTransition';
+
 import { AboutSection } from '../../components/dev/AboutSection';
 import { ProjectsSection } from '../../components/dev/ProjectsSection';
+import { SkillsSection } from '../../components/dev/SkillsSection';
 import { ContactSection } from '@/components/dev/ContactSection';
 
 const NAME_REST = ' del Angel';
@@ -86,7 +88,12 @@ export default function Home() {
           isMusic={isMusic}
         />
       )}
-      {section === 'about' && <AboutSection />}
+      {section === 'about' && (
+        <>
+          <AboutSection />
+          <SkillsSection />
+        </>
+      )}
       {section === 'projects' && <ProjectsSection key={section} />}
       {section === 'contact' && <ContactSection />}
     </PageTransition>

@@ -82,16 +82,19 @@ export function Nav({
               href = '/dev/about';
             } else if (l.toLowerCase() === 'projects') {
               href = '/dev/projects';
+            } else if (l.toLowerCase() === 'skills') {
+              href = '/dev/skills';
             } else if (l.toLowerCase() === 'contact') {
               href = '#contact';
             }
           }
           // Special client nav for contact
           if (
-            useClientDevNav &&
-            (l.toLowerCase() === 'about' ||
-              l.toLowerCase() === 'projects' ||
-              l.toLowerCase() === 'contact')
+            (useClientDevNav &&
+              (l.toLowerCase() === 'about' ||
+                l.toLowerCase() === 'projects' ||
+                l.toLowerCase() === 'contact')) ||
+            l.toLowerCase() === 'skills'
           ) {
             return (
               <a
