@@ -78,17 +78,26 @@ export function Nav({
       )}
       <div className="mx-1 flex min-w-0 max-w-[min(100%,58vw)] flex-1 items-center justify-center gap-1.5 overflow-x-auto whitespace-nowrap sm:max-w-none sm:gap-3 md:mx-0 md:gap-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {navLinks.map((l) => {
-          let href = `#${l.toLowerCase()}`;
-          if (!isMusic) {
-            if (l.toLowerCase() === 'about') {
-              href = '/dev/about';
-            } else if (l.toLowerCase() === 'projects') {
-              href = '/dev/projects';
-            } else if (l.toLowerCase() === 'skills') {
-              href = '/dev/about';
-            } else if (l.toLowerCase() === 'contact') {
-              href = '#contact';
+          const low = l.toLowerCase();
+          let href = `#${low}`;
+          if (isMusic) {
+            if (low === 'about') {
+              href = '/music';
+            } else if (low === 'lessons') {
+              href = '/music/lessons';
+            } else if (low === 'listen') {
+              href = '/music';
+            } else if (low === 'contact') {
+              href = '/music/contact';
             }
+          } else if (low === 'about') {
+            href = '/dev/about';
+          } else if (low === 'projects') {
+            href = '/dev/projects';
+          } else if (low === 'skills') {
+            href = '/dev/about';
+          } else if (low === 'contact') {
+            href = '#contact';
           }
           // Special client nav for contact
           if (
