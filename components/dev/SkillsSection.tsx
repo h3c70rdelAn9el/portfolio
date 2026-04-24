@@ -34,7 +34,7 @@ export function SkillsSection() {
   };
 
   return (
-    <section id="skills" className="relative z-10 px-8 md:px-16 mt-10">
+    <section id="skills" className="relative z-10 mt-10">
       <SectionHeader
         title="Skills"
         subtitle="What I use"

@@ -172,7 +172,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="relative z-10 px-8 md:px-16 pt-10"
+      className="relative z-10 pt-10"
       style={{ fontFamily: FONT_DEV }}>
       {/* Section header */}
       <div className="mb-12">
