@@ -8,9 +8,11 @@ import { useSiteMode } from '../../components/site/SiteModeContext';
 import { useDevView } from '../../components/site/DevViewContext';
 import { PageTransition } from '../../components/PageTransition';
 
-import { AboutSection } from '../../components/dev/AboutSection';
+import { AboutSection as DevAboutSection } from '../../components/dev/AboutSection';
+import { AboutSection as MusicAboutSection } from '../../components/music/AboutSection';
 import { ProjectsSection } from '../../components/dev/ProjectsSection';
-import { SkillsSection } from '../../components/dev/SkillsSection';
+import { SkillsSection as DevSkillsSection } from '../../components/dev/SkillsSection';
+import { SkillsSection as MusicSkillsSection } from '../../components/music/SkillsSection';
 // import { SkillsPills } from '../../components/dev/SkillsPills';
 import { ContactSection } from '@/components/dev/ContactSection';
 
@@ -77,7 +79,7 @@ export default function Home() {
   const lastName = isMusic ? c.name.split(' ').slice(1).join(' ') : NAME_REST.trim();
 
   return (
-    <PageTransition transitionKey={section}>
+    <PageTransition transitionKey={`${section}-${homeViewMode}`}>
       {section === 'home' && (
         <Hero
           glitchedLabel={glitchedLabel}
@@ -91,8 +93,8 @@ export default function Home() {
       )}
       {section === 'about' && (
         <>
-          <AboutSection />
-          <SkillsSection />
+          {isMusic ? <MusicAboutSection /> : <DevAboutSection />}
+          {isMusic ? <MusicSkillsSection /> : <DevSkillsSection />}
           {/* <SkillsPills /> */}
         </>
       )}

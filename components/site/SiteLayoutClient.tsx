@@ -26,10 +26,11 @@ export function SiteLayoutClient({ children }: { children: React.ReactNode }) {
   const onMusicPath = pathname === '/music' || pathname.startsWith('/music/');
   const inDevSubSection = !onMusicPath && (section === 'about' || section === 'projects');
 
-  const shellMode: 'dev' | 'music' = onMusicPath ? 'music' : isDevHomeHero ? homeViewMode : 'dev';
+  /** Theme matches dev/music toggle everywhere (about/projects views included), not only on the home hero. */
+  const shellMode: 'dev' | 'music' = onMusicPath ? 'music' : homeViewMode;
   const atmosphereMode: 'dev' | 'music' = onMusicPath ? 'music' : homeViewMode;
   const c = content[shellMode];
-  const isMusicForNav = onMusicPath || (isDevHomeHero && homeViewMode === 'music');
+  const isMusicForNav = onMusicPath || homeViewMode === 'music';
   const cornerFont = shellMode === 'music' ? FONT_MUSIC : FONT_DEV;
 
   const handleModeToggle = () => {

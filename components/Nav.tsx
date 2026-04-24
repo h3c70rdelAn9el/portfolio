@@ -22,6 +22,7 @@ interface NavProps {
 }
 
 const FONT_DEV = 'var(--font-space), sans-serif';
+const FONT_MUSIC = 'var(--font-cormorant), serif';
 
 export function Nav({
   navLinks,
@@ -36,10 +37,11 @@ export function Nav({
   useClientDevNav,
   onDevClientNav,
 }: NavProps) {
+  const navFont = isMusic ? FONT_MUSIC : FONT_DEV;
   const linkClassName =
     'text-[0.62rem] tracking-wider uppercase transition-colors duration-300 sm:tracking-widest sm:text-xs';
   const linkStyle: React.CSSProperties = {
-    fontFamily: FONT_DEV,
+    fontFamily: navFont,
     color: linkColor,
   };
   const setHover = (e: React.MouseEvent<HTMLAnchorElement>, hover: string) => {
@@ -58,7 +60,7 @@ export function Nav({
       {isDevHomeHero ? (
         <span
           className={brandClassName}
-          style={{ fontFamily: FONT_DEV, color: brandColor }}>
+          style={{ fontFamily: navFont, color: brandColor }}>
           {brand}
         </span>
       ) : (
@@ -66,7 +68,7 @@ export function Nav({
           href="/"
           scroll={false}
           className={brandClassName}
-          style={{ fontFamily: FONT_DEV, color: brandColor, cursor: 'pointer' }}
+          style={{ fontFamily: navFont, color: brandColor, cursor: 'pointer' }}
           onClick={(e) => {
             e.preventDefault();
             onBrandHome();
@@ -144,7 +146,7 @@ export function Nav({
         onClick={onToggle}
         className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs backdrop-blur-md hover:border-white/20 transition-all duration-300 cursor-pointer"
         style={{
-          fontFamily: FONT_DEV,
+          fontFamily: navFont,
           color: linkColor,
         }}
         onMouseEnter={(e) => {

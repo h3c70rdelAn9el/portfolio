@@ -1,7 +1,21 @@
 import Image from 'next/image';
+import { content } from '../../types/content';
 import { SectionHeader } from '../SectionHeader';
 
-const ACCENT = '#ffe9a7';
+const music = content.music;
+
+function hexToRgbTuple(hex: string): [number, number, number] {
+  const h = hex.replace('#', '');
+  const n = parseInt(h.length === 3 ? h.split('').map((c) => c + c).join('') : h, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+}
+
+const imageGlow = (() => {
+  const [r, g, b] = hexToRgbTuple(music.orb1);
+  return {
+    boxShadow: `0 0 40px rgba(${r},${g},${b},0.15),0 0 64px rgba(${r},${g},${b},0.08)`,
+  } as const;
+})();
 
 /** Image under `public/guitar.jpg` — swap for a portrait when you have one. */
 const PROFILE_SRC = '/guitar.jpg';
@@ -9,10 +23,13 @@ const PROFILE_SRC = '/guitar.jpg';
 export function AboutSection() {
   return (
     <section id="about" className="relative z-10 pt-10">
-      <SectionHeader title="About" subtitle="Who I am" accentColor={ACCENT} />
+      <SectionHeader title="About" subtitle="Who I am" accentColor={music.accent} />
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 md:gap-14 md:items-start">
         <div className="shrink-0 flex justify-center md:justify-start md:pt-1">
-          <div className="mx-auto w-full max-w-[240px] rounded-2xl shadow-[0_0_40px_rgba(245,158,11,0.15),0_0_64px_rgba(245,158,11,0.08)] md:mx-0">
+          <div
+            className="mx-auto w-full max-w-[240px] rounded-2xl md:mx-0"
+            style={imageGlow}
+          >
             <div className="group relative h-[300px] sm:h-[320px] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/3">
               <Image
                 src={PROFILE_SRC}
@@ -40,7 +57,7 @@ export function AboutSection() {
             help students and listeners connect with the instrument and the feel behind the notes —
             technique in service of expression.
           </p>
-          <p className="mt-8 text-[#fbbf24]">
+          <p className="mt-8" style={{ color: music.accent }}>
             Somewhere between the first open chord and the next phrase that feels like home.
           </p>
         </div>
