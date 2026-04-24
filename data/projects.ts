@@ -14,7 +14,7 @@ export const projects: Project[] = [
     id: '1',
     title: 'FOSH',
     description:
-      'FOSH is a real-time event discovery platform that helps users find live events and local experiences nearby through an interactive map.',
+      'Co-built FOSH, a real-time event discovery platform focused on Philadelphia, helping users find live events and local experiences through an interactive map. The platform features a dynamic map interface and personalized recommendations, making it easy to explore what’s happening around the city.',
     image: '/fosh_map.png',
     liveUrl: 'https://fosh.live',
     repoUrl: 'https://github.com/YOUR_HANDLE/project-one',
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     id: '2',
     title: 'Therapist Dashboard',
     description:
-      'A dashboard application for therapists to manage their appointments, clients, and session notes efficiently.',
+      'Demo of a custom dashboard application for therapists to manage their appointments, clients, and session notes efficiently.',
     image: '/pine.png',
     tech: ['React', 'Node.js', 'MongoDB'],
     liveUrl: 'https://yoursite.com',
@@ -33,7 +33,8 @@ export const projects: Project[] = [
   {
     id: '3',
     title: 'ToneVault',
-    description: 'A short description of what this project does and the problem it solves.',
+    description:
+      'Built Tone Vault, a platform for Neural Amp Modeler users to store, organize, and explore amp captures, tones, and settings. The platform features a clean interactive interface designed to make managing and discovering sounds fast and intuitive.',
     image: '/tonevault.png',
     tech: ['TypeScript', 'Prisma', 'PostgreSQL'],
     liveUrl: 'https://yoursite.com',
@@ -42,7 +43,8 @@ export const projects: Project[] = [
   {
     id: '4',
     title: 'site',
-    description: 'A short description of what this project does and the problem it solves.',
+    description:
+      'A custom Next.js portfolio with animated section navigation, a looping glassmorphic skills carousel, and dynamic dev/music themes—all built from scratch with Tailwind and Framer Motion.',
     image: '/site.png',
     tech: ['React', 'Tailwind', 'Supabase'],
     liveUrl: 'https://yoursite.com',
