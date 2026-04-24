@@ -17,7 +17,7 @@ const offerings = [
   },
   {
     title: 'All Styles Welcome',
-    desc: 'Classical, blues, rock, metal, prog — if it involves six strings, we can work on it.',
+    desc: 'Classical, blues, rock, metal, prog — if it involves six (or more) strings, we can work on it.',
   },
   {
     title: 'In-Person & Online',
