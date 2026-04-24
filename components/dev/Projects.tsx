@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { projects, Project } from './projects';
+import { projects, type Project } from '../../data/projects';
 
 const FONT_DEV = 'var(--font-space), sans-serif';
 const ACCENT = '#4f6fff';
