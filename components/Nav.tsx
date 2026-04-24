@@ -85,7 +85,7 @@ export function Nav({
             } else if (l.toLowerCase() === 'projects') {
               href = '/dev/projects';
             } else if (l.toLowerCase() === 'skills') {
-              href = '/dev/skills';
+              href = '/dev/about';
             } else if (l.toLowerCase() === 'contact') {
               href = '#contact';
             }
@@ -106,7 +106,8 @@ export function Nav({
                 style={linkStyle}
                 onClick={(e) => {
                   e.preventDefault();
-                  onDevClientNav(l.toLowerCase() as DevSection);
+                  const raw = l.toLowerCase();
+                  onDevClientNav((raw === 'skills' ? 'about' : raw) as DevSection);
                 }}
                 onMouseEnter={(e) => setHover(e, linkHoverColor)}
                 onMouseLeave={(e) => setHover(e, linkColor)}>

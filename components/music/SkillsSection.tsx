@@ -23,11 +23,7 @@ export function SkillsSection() {
 
   return (
     <section id="skills" className="relative z-10 mt-10">
-      <SectionHeader
-        title="Skills"
-        subtitle="What I use"
-        accentColor={music.accent}
-      />
+      <SectionHeader title="Styles" subtitle="What I play" accentColor={music.accent} />
 
       <div className="relative mt-8">
         <button
@@ -90,7 +86,7 @@ export function SkillsSection() {
         </button>
       </div>
 
-      <style>{`#skills ::-webkit-scrollbar { display: none; }`}</style>
+      {/* <style>{`#skills ::-webkit-scrollbar { display: none; }`}</style> */}
     </section>
   );
 }

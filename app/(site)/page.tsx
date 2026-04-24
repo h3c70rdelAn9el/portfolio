@@ -12,7 +12,6 @@ import { AboutSection as DevAboutSection } from '../../components/dev/AboutSecti
 import { AboutSection as MusicAboutSection } from '../../components/music/AboutSection';
 import { ProjectsSection } from '../../components/dev/ProjectsSection';
 import { SkillsSection as DevSkillsSection } from '../../components/dev/SkillsSection';
-import { SkillsSection as MusicSkillsSection } from '../../components/music/SkillsSection';
 // import { SkillsPills } from '../../components/dev/SkillsPills';
 import { ContactSection } from '@/components/dev/ContactSection';
 
@@ -94,7 +93,7 @@ export default function Home() {
       {section === 'about' && (
         <>
           {isMusic ? <MusicAboutSection /> : <DevAboutSection />}
-          {isMusic ? <MusicSkillsSection /> : <DevSkillsSection />}
+          {!isMusic && <DevSkillsSection />}
           {/* <SkillsPills /> */}
         </>
       )}
